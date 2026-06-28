@@ -1,0 +1,14 @@
+# Virtual Environment
+.venv/
+__pycache__/
+*.pyc
+
+# Local Credentials & Configurations
+.env
+
+# Local Databases (Keep raw site data local)
+*.db
+
+# Application Generated Outputs & Runtime Logs
+outputs/
+*.log
