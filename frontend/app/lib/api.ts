@@ -175,14 +175,15 @@ export interface IngestCategoryResult {
 
 export interface IngestResponse {
   status: 'success' | 'partial_success' | 'error';
-  file_name: string;
+  file_names: string[];
+  page_count: number;
   results: IngestCategoryResult[];
 }
 
-export async function ingestDocument(siteId: number, categories: string[], file: File): Promise<IngestResponse> {
+export async function ingestDocument(siteId: number, categories: string[], files: File[]): Promise<IngestResponse> {
   const formData = new FormData();
   categories.forEach((category) => formData.append('categories', category));
-  formData.append('file', file);
+  files.forEach((file) => formData.append('files', file));
   const res = await fetch(`${BASE_URL}/api/v1/sites/${siteId}/ingest`, { method: 'POST', body: formData });
   return handle<IngestResponse>(res);
 }

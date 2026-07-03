@@ -2,7 +2,11 @@
 Node 2: Extraction.
 
 Leverages Gemini structured outputs to safely populate the target schema for
-the document's category (DPR / MATERIAL / BILLING / DRAWING).
+the document's category (DPR / MATERIAL / BILLING / DRAWING). When the
+batch spans multiple physical images (e.g. sequential WhatsApp photos of
+the same day's log), every page is sent to Gemini together in one call so
+the model reads them as continuous context and returns a single cohesive
+record for the report, rather than one fragmentary record per photo.
 """
 import time
 import json
@@ -48,10 +52,23 @@ def make_extraction_node(db: Session):
                 "error": f"Unsupported ingestion category '{state.category}'.",
                 "audit_trail": state.audit_trail + [f"{NODE_NAME}: unsupported category"],
             }
+        if not state.files:
+            return {
+                "error": "No pages were provided to extract from.",
+                "audit_trail": state.audit_trail + [f"{NODE_NAME}: no pages in batch"],
+            }
 
         client = _get_client()
-        part = types.Part.from_bytes(data=state.file_bytes, mime_type=state.mime_type)
+        page_parts = [types.Part.from_bytes(data=page.file_bytes, mime_type=page.mime_type) for page in state.files]
         prompt = CATEGORY_PROMPTS[state.category]
+        if len(page_parts) > 1:
+            prompt = (
+                f"The following {len(page_parts)} images are sequential pages/photos of the SAME report "
+                "(e.g. multiple WhatsApp photos of one day's log sheet), in order. Read them together as one "
+                "continuous document and return a single, cohesive, de-duplicated record -- do not treat each "
+                "image as a separate report, and do not double-count rows/values that appear across overlapping "
+                "shots of the same page. " + prompt
+            )
 
         config_obj = types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -60,10 +77,10 @@ def make_extraction_node(db: Session):
         )
 
         try:
-            response = _execute_with_retry(client, [part, prompt], config_obj)
+            response = _execute_with_retry(client, [*page_parts, prompt], config_obj)
             parsed = schema_cls.model_validate_json(response.text)
             payload = parsed.model_dump()
-            status, message = "SUCCESS", f"Extracted {state.category} payload."
+            status, message = "SUCCESS", f"Extracted {state.category} payload from {len(page_parts)} page(s)."
         except Exception as exc:  # noqa: BLE001 - surfaced to caller via state.error
             payload = None
             status, message = "FAILED", f"Extraction failed: {exc}"

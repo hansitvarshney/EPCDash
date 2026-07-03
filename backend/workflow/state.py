@@ -17,14 +17,28 @@ class ExceptionDraft(BaseModel):
     entry_index: Optional[int] = None  # index into payload's list of records this exception targets, if any
 
 
-class IngestState(BaseModel):
-    """Shared state threaded through the 4-node LangGraph ingestion workflow."""
+class IngestFile(BaseModel):
+    """One physical page/photo within a (possibly multi-image) upload batch."""
 
-    project_id: int
-    category: str  # DPR | MATERIAL | BILLING | DRAWING
     file_name: str
     mime_type: str = "application/pdf"
     file_bytes: bytes = b""
+
+
+class IngestState(BaseModel):
+    """
+    Shared state threaded through the 4-node LangGraph ingestion workflow.
+
+    `files` holds an ordered batch of one-or-more physical images/pages that
+    together represent a single logical report (e.g. 2-3 sequential WhatsApp
+    photos of the same day's DPR sheet). The pipeline persists the whole
+    batch under one `ProjectDocument` row and asks Gemini to read all pages
+    together, producing a single cohesive extracted record.
+    """
+
+    project_id: int
+    category: str  # DPR | MATERIAL | BILLING | DRAWING
+    files: List[IngestFile] = Field(default_factory=list)
 
     document_id: Optional[int] = None
     storage_path: Optional[str] = None

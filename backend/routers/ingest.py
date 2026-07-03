@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from backend.database import get_db
 from backend.models import Project, ProjectDocument
 from backend.workflow.graph import run_ingest_workflow
+from backend.workflow.state import IngestFile
 from backend.graph_rag import build_project_knowledge_graph
 
 router = APIRouter(prefix="/api/v1/sites", tags=["ingest"])
@@ -26,21 +27,36 @@ def _get_or_create_site(db: Session, site_id: int) -> Project:
     return site
 
 
+def _infer_mime_type(filename: str) -> str:
+    suffix = Path(filename).suffix.lower()
+    if suffix == ".pdf":
+        return "application/pdf"
+    if suffix == ".png":
+        return "image/png"
+    return "image/jpeg"
+
+
 @router.post("/{site_id}/ingest")
 async def ingest_site_document(
     site_id: int,
     categories: List[str] = Form(...),
-    file: UploadFile = File(...),
+    files: List[UploadFile] = File(...),
     db: Session = Depends(get_db),
 ):
     """
     Runs the full 4-node LangGraph pipeline (Ingestion & Audit Trail ->
-    Extraction -> Validation/Judge -> Excel Writer) against one uploaded
-    document, once per selected operational category. This supports
-    multi-sheet documents that pack more than one ledger's worth of data
-    (e.g. a combined DPR + Material sheet) into a single upload -- the same
-    file bytes are re-run through the category-specific extraction schema
-    for each selection, and results are aggregated into one response.
+    Extraction -> Validation/Judge -> Excel Writer) against a batch of one
+    or more uploaded pages/photos, once per selected operational category.
+
+    The batch supports two independent axes of "multiple":
+    - Multiple physical images that together form ONE logical report (e.g.
+      2-3 sequential WhatsApp photos of the same day's log) -- these are
+      read together by Gemini as continuous context and resolve to a single
+      cohesive record.
+    - Multiple selected categories for that same batch (e.g. a combined
+      DPR + Material sheet) -- the same batch is re-run through each
+      category-specific extraction schema, and results are aggregated into
+      one response.
     """
     normalized_categories = [c.strip().upper() for c in categories if c.strip()]
     if not normalized_categories:
@@ -48,12 +64,15 @@ async def ingest_site_document(
     invalid = sorted(set(normalized_categories) - VALID_CATEGORIES)
     if invalid:
         raise HTTPException(status_code=400, detail=f"Invalid categories {invalid}. Must be one of {sorted(VALID_CATEGORIES)}.")
+    if not files:
+        raise HTTPException(status_code=400, detail="At least one file must be uploaded.")
 
     _get_or_create_site(db, site_id)
 
-    file_bytes = await file.read()
-    suffix = Path(file.filename).suffix.lower()
-    mime_type = "application/pdf" if suffix == ".pdf" else ("image/png" if suffix == ".png" else "image/jpeg")
+    ingest_files: List[IngestFile] = []
+    for upload in files:
+        content = await upload.read()
+        ingest_files.append(IngestFile(file_name=upload.filename, mime_type=_infer_mime_type(upload.filename), file_bytes=content))
 
     results = []
     for category in normalized_categories:
@@ -62,9 +81,7 @@ async def ingest_site_document(
                 db=db,
                 project_id=site_id,
                 category=category,
-                file_name=file.filename,
-                file_bytes=file_bytes,
-                mime_type=mime_type,
+                files=ingest_files,
             )
         except Exception as exc:
             db.rollback()
@@ -95,7 +112,12 @@ async def ingest_site_document(
     else:
         overall_status = "partial_success"
 
-    return {"status": overall_status, "file_name": file.filename, "results": results}
+    return {
+        "status": overall_status,
+        "file_names": [f.filename for f in files],
+        "page_count": len(files),
+        "results": results,
+    }
 
 
 @router.post("/{site_id}/documents")

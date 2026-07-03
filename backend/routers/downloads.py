@@ -1,4 +1,5 @@
 import os
+import shutil
 from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -17,6 +18,20 @@ from backend.models import (
 )
 
 router = APIRouter(prefix="/api/v1/sites", tags=["downloads"])
+
+
+def _remove_path(path: str) -> None:
+    """Removes a file or a whole batch directory (multi-page uploads are
+    stored as a directory of page images), tolerating already-missing paths."""
+    if not path or not os.path.exists(path):
+        return
+    try:
+        if os.path.isdir(path):
+            shutil.rmtree(path)
+        else:
+            os.remove(path)
+    except OSError:
+        pass
 
 
 @router.get("/{site_id}/downloads")
@@ -107,17 +122,10 @@ def delete_site_document(site_id: int, document_id: int, db: Session = Depends(g
         .first()
         is not None
     )
-    if not sibling_exists and document.storage_path and os.path.exists(document.storage_path):
-        try:
-            os.remove(document.storage_path)
-        except OSError:
-            pass
+    if not sibling_exists:
+        _remove_path(document.storage_path)
 
-    if document.excel_output_path and os.path.exists(document.excel_output_path):
-        try:
-            os.remove(document.excel_output_path)
-        except OSError:
-            pass
+    _remove_path(document.excel_output_path)
 
     # `IngestionAuditLog` rows cascade automatically via the
     # `ProjectDocument.audit_logs` relationship's delete-orphan cascade.
