@@ -19,3 +19,5 @@ backend/service_account.json
 
 # Next.js local env overrides
 frontend/.env.local
+.DS_Store
+**/.DS_Store
