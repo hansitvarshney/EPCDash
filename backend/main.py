@@ -34,9 +34,18 @@ from backend.routers import sites, ingest, exceptions, downloads, chat
 
 app = FastAPI(title="EPC Multi-Agent Construction Platform API")
 
+# Explicit origins always include local dev; extra production origins (e.g.
+# the deployed frontend's Railway domain) can be added without a code change
+# via the ALLOWED_ORIGINS env var (comma-separated). The regex additionally
+# allow-lists any *.up.railway.app domain so a freshly-created frontend
+# service works immediately, before its exact domain is known/configured.
+_default_origins = ["http://localhost:3000"]
+_extra_origins = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=_default_origins + _extra_origins,
+    allow_origin_regex=r"https://.*\.up\.railway\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
