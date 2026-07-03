@@ -29,7 +29,7 @@ load_dotenv(dotenv_path=root_dir / ".env")
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.database import init_db
+from backend.database import init_db, SessionLocal
 from backend.routers import sites, ingest, exceptions, downloads, chat
 
 app = FastAPI(title="EPC Multi-Agent Construction Platform API")
@@ -43,9 +43,33 @@ app.add_middleware(
 )
 
 
+def _seed_demo_data_if_empty() -> None:
+    """
+    Fresh deploys (e.g. Railway's ephemeral filesystem, a first-time local
+    clone) start with an empty SQLite file. Auto-seed the 3 demo sites the
+    very first time there's no project data at all, so the app is never
+    left showing a blank portfolio -- this is a no-op (and touches nothing)
+    once any project exists.
+    """
+    from backend.models import Project
+
+    db = SessionLocal()
+    try:
+        has_data = db.query(Project).first() is not None
+    finally:
+        db.close()
+
+    if not has_data:
+        from backend.seed_projects import seed_active_sites
+
+        print("No existing project data found -- seeding demo sites...")
+        seed_active_sites()
+
+
 @app.on_event("startup")
 def on_startup():
     init_db()
+    _seed_demo_data_if_empty()
 
 
 app.include_router(sites.router)
