@@ -97,8 +97,10 @@ export interface ExceptionAlert {
 }
 
 export interface DownloadFile {
+  document_id: number;
   file_name: string;
   category: string;
+  report_date: string | null;
   last_synced_at: string;
   size_bytes: number;
   download_url: string;
@@ -155,6 +157,11 @@ export async function fetchDownloads(siteId: number): Promise<DownloadFile[]> {
 
 export function downloadFileUrl(downloadUrl: string): string {
   return `${BASE_URL}${downloadUrl}`;
+}
+
+export async function deleteDocument(siteId: number, documentId: number): Promise<void> {
+  const res = await fetch(`${BASE_URL}/api/v1/sites/${siteId}/documents/${documentId}`, { method: 'DELETE' });
+  await handle(res);
 }
 
 export interface IngestCategoryResult {

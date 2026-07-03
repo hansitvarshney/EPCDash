@@ -4,7 +4,16 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { ArrowLeft, MapPin, Building2 } from 'lucide-react';
-import { fetchSiteOverview, fetchExceptions, fetchDownloads, resolveException, SiteOverview, ExceptionAlert, DownloadFile } from '../../lib/api';
+import {
+  fetchSiteOverview,
+  fetchExceptions,
+  fetchDownloads,
+  resolveException,
+  deleteDocument,
+  SiteOverview,
+  ExceptionAlert,
+  DownloadFile,
+} from '../../lib/api';
 import HealthBadge from '../../components/site/HealthBadge';
 import VelocityTracker from '../../components/detail/VelocityTracker';
 import ExceptionsFeed from '../../components/detail/ExceptionsFeed';
@@ -50,6 +59,16 @@ export default function SiteDetailPage() {
       setExceptions((prev) => prev.filter((e) => e.id !== exceptionId));
     } catch {
       // no-op: keep it in the list if resolution failed
+    }
+  };
+
+  const handleDeleteDownload = async (documentId: number) => {
+    const previous = downloads;
+    setDownloads((prev) => prev.filter((f) => f.document_id !== documentId));
+    try {
+      await deleteDocument(siteId, documentId);
+    } catch {
+      setDownloads(previous);
     }
   };
 
@@ -120,7 +139,7 @@ export default function SiteDetailPage() {
             <ExceptionsFeed exceptions={exceptions} onResolve={handleResolve} />
           </div>
           <div className="space-y-6">
-            <DownloadHub files={downloads} />
+            <DownloadHub files={downloads} onDelete={handleDeleteDownload} />
           </div>
         </div>
 

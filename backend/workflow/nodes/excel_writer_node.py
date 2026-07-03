@@ -33,6 +33,28 @@ from backend.workflow.state import IngestState, ExceptionDraft
 
 NODE_NAME = "excel_writer"
 
+# The field on each category's extracted payload that carries the actual
+# operational date written on the physical document (not the upload time).
+# Checked in priority order; the first present + parseable value wins.
+_REPORT_DATE_FIELDS = {
+    "DPR": ("report_date",),
+    "MATERIAL": ("report_date",),
+    "BILLING": ("invoice_date", "submitted_date"),
+    "DRAWING": ("gfc_issue_date", "client_signoff_date"),
+}
+
+
+def _resolve_report_date(category: str, payload: dict):
+    for field in _REPORT_DATE_FIELDS.get(category, ()):
+        raw = payload.get(field)
+        if not raw:
+            continue
+        try:
+            return datetime.strptime(raw, "%Y-%m-%d").date()
+        except (ValueError, TypeError):
+            continue
+    return None
+
 
 def _write_dpr(db: Session, excel: ExcelWriterService, project_id: int, document_id, payload: dict) -> list:
     log = DailyProgressLog(
@@ -267,6 +289,8 @@ def make_excel_writer_node(db: Session):
         if document:
             document.ingestion_status = IngestionStatus.COMPLETE
             document.page_count = document.page_count or 1
+            document.report_date = _resolve_report_date(state.category, state.extracted_payload)
+            document.excel_output_path = output_path
 
         db.add(
             IngestionAuditLog(

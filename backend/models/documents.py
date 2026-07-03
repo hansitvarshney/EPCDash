@@ -1,6 +1,6 @@
 import enum
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Enum as SAEnum
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Date, Enum as SAEnum
 from sqlalchemy.orm import relationship
 
 from backend.database import Base
@@ -28,6 +28,13 @@ class ProjectDocument(Base):
     page_count = Column(Integer, nullable=True)
     mime_type = Column(String, nullable=True)
     ingestion_status = Column(SAEnum(IngestionStatus), default=IngestionStatus.PENDING, nullable=False)
+
+    # Operational date written on the physical log/document itself (not the
+    # upload timestamp) -- resolved per-category by the Excel Writer node.
+    report_date = Column(Date, nullable=True)
+    # Path to the generated tracking workbook produced by this specific
+    # ingestion run, if the pipeline completed successfully.
+    excel_output_path = Column(String, nullable=True)
 
     project = relationship("Project", back_populates="documents")
     audit_logs = relationship("IngestionAuditLog", back_populates="document", cascade="all, delete-orphan")
