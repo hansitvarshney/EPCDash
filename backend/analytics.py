@@ -24,23 +24,25 @@ class AnalyticsEngine:
             .all()
         )
 
-        # 2. Aggregate Total Labor Headcount Days
-        labor_totals = (
-            db.query(
-                func.sum(LaborLedger.masons_count).label("total_masons"),
-                func.sum(LaborLedger.helpers_count).label("total_helpers")
-            )
-            .join(DailySiteLog)
-            .filter(DailySiteLog.project_id == project_id)
-            .first()
-        )
+        # 2. Raw query aggregation to make sure variables reader numbers
+        total_m = db.query(func.sum(LaborLedger.masons_count)).join(DailySiteLog).filter(DailySiteLog.project_id == project_id).scalar() or 0
+        total_h = db.query(func.sum(LaborLedger.helpers_count)).join(DailySiteLog).filter(DailySiteLog.project_id == project_id).scalar() or 0
+
+        # 3. Extract distinct log dates, converting date objects safely to strings
+        raw_dates = db.query(DailySiteLog.report_date).filter(DailySiteLog.project_id == project_id).distinct().all()
+        active_dates = []
+        for d in raw_dates:
+            if d[0]:
+                date_str = d[0] if isinstance(d[0], str) else d[0].strftime("%Y-%m-%d")
+                active_dates.append(date_str)
 
         return {
             "project_id": project_id,
+            "active_log_dates": active_dates,
             "manpower_deployed": {
-                "cumulative_masons": labor_totals.total_masons or 0,
-                "cumulative_helpers": labor_totals.total_helpers or 0,
-                "total_man_days": (labor_totals.total_masons or 0) + (labor_totals.total_helpers or 0)
+                "cumulative_masons": int(total_m),
+                "cumulative_helpers": int(total_h),
+                "total_man_days": int(total_m) + int(total_h)
             },
             "quantities_executed": [
                 {

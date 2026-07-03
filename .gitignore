@@ -11,4 +11,4 @@ __pycache__/
 
 # Application Generated Outputs & Runtime Logs
 outputs/
-*.log
+*.logbackend/service_account.json

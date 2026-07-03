@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
@@ -12,58 +13,95 @@ class Project(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     logs = relationship("DailySiteLog", back_populates="project")
+    documents = relationship("ProjectDocument", back_populates="project") # 🔗 Link docs to projects
+
+# 📄 ADD THIS NEW CLASS TO FIX THE IMPORT ERROR
+class ProjectDocument(Base):
+    """Tracks document processing metadata for GraphRAG document uploads."""
+    __tablename__ = "project_documents"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    project_id = Column(Integer, ForeignKey("projects.id"), nullable=False)
+    file_name = Column(String, nullable=False)
+    file_category = Column(String, nullable=False)  # e.g., 'CONTRACT', 'TENDER'
+    storage_path = Column(String, nullable=False)   # Path on disk
+    
+    project = relationship("Project", back_populates="documents")
 
 class DailySiteLog(Base):
     __tablename__ = "daily_site_logs"
     id = Column(Integer, primary_key=True, index=True)
     project_id = Column(Integer, ForeignKey("projects.id"), nullable=False)
-    report_date = Column(String, nullable=False)  # YYYY-MM-DD
-    category = Column(String, nullable=False)     # SHUTTERING, REINFORCEMENT_BBS, CONCRETE_POUR
+    report_date = Column(String, nullable=False)  
+    category = Column(String, nullable=False)     
     
     project = relationship("Project", back_populates="logs")
     labor_entries = relationship("LaborLedger", back_populates="site_log")
     work_metrics = relationship("DailyWorkMetrics", back_populates="site_log")
 
 class LaborLedger(Base):
-    """Tracks crew strengths across all phases (Civil, MEP, Finishes, Landscaping)."""
     __tablename__ = "ledger_labor"
-    
     id = Column(Integer, primary_key=True, index=True)
     log_id = Column(Integer, ForeignKey("daily_site_logs.id"), nullable=False)
     contractor_name = Column(String, nullable=False)
-    crew_type = Column(String, nullable=False)      # e.g., 'On Contract Basis', 'PRW'
-    masons_count = Column(Integer, default=0)       # 'M' count
-    helpers_count = Column(Integer, default=0)      # 'H' count
-    assigned_activity = Column(String, nullable=True) # e.g., 'Excavation', 'Shear Wall Shuttering'
+    crew_type = Column(String, nullable=False)      
+    masons_count = Column(Integer, default=0)       
+    helpers_count = Column(Integer, default=0)      
+    assigned_activity = Column(String, nullable=True) 
     
     site_log = relationship("DailySiteLog", back_populates="labor_entries")
 
 class DailyWorkMetrics(Base):
-    """
-    AN INFINITELY ADAPTIVE LEDGER.
-    Maps whatever work quantity is captured on the sheet based on the active construction timeline.
-    """
     __tablename__ = "ledger_daily_work_metrics"
-    
     id = Column(Integer, primary_key=True, index=True)
     log_id = Column(Integer, ForeignKey("daily_site_logs.id"), nullable=False)
-    
-    category = Column(String, nullable=False)         # e.g., 'Shuttering Area', 'Concrete Pour', 'Steel BBS'
-    element_id = Column(String, nullable=False)       # e.g., 'S/W-15', 'Stair Landing'
-    sub_component = Column(String, nullable=True)     # e.g., 'Lapping', 'Hook', 'Ring'
-    
-    formula_notation = Column(String, nullable=True)  # Logs breakdown: '(1.35 x 3) x 2'
-    metric_value = Column(Float, nullable=False)      # Quantitative output: 8.10, 4202.55
-    unit = Column(String, nullable=False)             # Dynamic unit string: 'm2', 'm3', 'kg'
+    category = Column(String, nullable=False)         
+    element_id = Column(String, nullable=False)       
+    sub_component = Column(String, nullable=True)     
+    formula_notation = Column(String, nullable=True)  
+    metric_value = Column(Float, nullable=False)      
+    unit = Column(String, nullable=False)             
     
     site_log = relationship("DailySiteLog", back_populates="work_metrics")
 
+def run_legacy_date_migration():
+    """
+    Scans existing DB rows to enforce strict standardization down to YYYY-MM-DD tokens.
+    Prevents deletion route drops caused by variable formatting extractions.
+    """
+    db = SessionLocal()
+    try:
+        logs = db.query(DailySiteLog).all()
+        modified = False
+        for log in logs:
+            clean = log.report_date.strip().replace("/", "-").replace(".", "-")
+            for fmt in ("%Y-%m-%d", "%d-%m-%Y", "%y-%m-%d", "%d-%m-%y"):
+                try:
+                    standardized = datetime.strptime(clean, fmt).strftime("%Y-%m-%d")
+                    if log.report_date != standardized:
+                        print(f"🔧 Retrofitting legacy database entry format: {log.report_date} -> {standardized}")
+                        log.report_date = standardized
+                        modified = True
+                    break
+                except ValueError:
+                    continue
+        if modified:
+            db.commit()
+            print("✅ Database structural date records successfully aligned.")
+    except Exception as e:
+        print(f"⚠️ Routine migration check deferred: {e}")
+    finally:
+        db.close()
+
 def init_db():
     Base.metadata.create_all(bind=engine)
+    # Automatically ensure historical rows match format layouts smoothly
+    run_legacy_date_migration()
 
 if __name__ == "__main__":
     print("Initializing local SQLite schemas...")
-    if os.path.exists(DB_PATH):
-        os.remove(DB_PATH)
+    # NOTE: Commented out schema removal to preserve your active database progress rows during manual test script execution runs
+    # if os.path.exists(DB_PATH):
+    #     os.remove(DB_PATH)
     init_db()
     print("Database ready.")

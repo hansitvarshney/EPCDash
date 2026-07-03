@@ -1,0 +1,849 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-06-29">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="node">
+      <attribute id="0" title="type" type="string" />
+    </attributes>
+    <nodes>
+      <node id="BECOMING A MAN — 2026" label="BECOMING A MAN — 2026">
+        <attvalues>
+          <attvalue for="0" value="Project Goal" />
+        </attvalues>
+      </node>
+      <node id="Lifestyle Hygiene" label="Lifestyle Hygiene">
+        <attvalues>
+          <attvalue for="0" value="Priority Aspect" />
+        </attvalues>
+      </node>
+      <node id="Body Recovery &amp; Regulation" label="Body Recovery &amp; Regulation">
+        <attvalues>
+          <attvalue for="0" value="Priority Aspect" />
+        </attvalues>
+      </node>
+      <node id="Attention Control / Focus" label="Attention Control / Focus">
+        <attvalues>
+          <attvalue for="0" value="Priority Aspect" />
+        </attvalues>
+      </node>
+      <node id="Skill Development (Leverage Skills)" label="Skill Development (Leverage Skills)">
+        <attvalues>
+          <attvalue for="0" value="Priority Aspect" />
+        </attvalues>
+      </node>
+      <node id="Emotional Regulation" label="Emotional Regulation">
+        <attvalues>
+          <attvalue for="0" value="Priority Aspect" />
+        </attvalues>
+      </node>
+      <node id="Identity Consistency" label="Identity Consistency">
+        <attvalues>
+          <attvalue for="0" value="Priority Aspect" />
+        </attvalues>
+      </node>
+      <node id="Rating_LifestyleHygiene_5" label="Rating_LifestyleHygiene_5">
+        <attvalues>
+          <attvalue for="0" value="Current Rating Value" />
+        </attvalues>
+      </node>
+      <node id="Rating_BodyRecovery_5" label="Rating_BodyRecovery_5">
+        <attvalues>
+          <attvalue for="0" value="Current Rating Value" />
+        </attvalues>
+      </node>
+      <node id="Rating_AttentionControl_4" label="Rating_AttentionControl_4">
+        <attvalues>
+          <attvalue for="0" value="Current Rating Value" />
+        </attvalues>
+      </node>
+      <node id="Rating_SkillDevelopment_4" label="Rating_SkillDevelopment_4">
+        <attvalues>
+          <attvalue for="0" value="Current Rating Value" />
+        </attvalues>
+      </node>
+      <node id="Rating_EmotionalRegulation_7" label="Rating_EmotionalRegulation_7">
+        <attvalues>
+          <attvalue for="0" value="Current Rating Value" />
+        </attvalues>
+      </node>
+      <node id="Rating_IdentityConsistency_6" label="Rating_IdentityConsistency_6">
+        <attvalues>
+          <attvalue for="0" value="Current Rating Value" />
+        </attvalues>
+      </node>
+      <node id="Progress_LifestyleHygiene_YearEnd" label="Progress_LifestyleHygiene_YearEnd">
+        <attvalues>
+          <attvalue for="0" value="Year-End Progress Goal" />
+        </attvalues>
+      </node>
+      <node id="Progress_BodyRecovery_YearEnd" label="Progress_BodyRecovery_YearEnd">
+        <attvalues>
+          <attvalue for="0" value="Year-End Progress Goal" />
+        </attvalues>
+      </node>
+      <node id="Progress_AttentionControl_YearEnd" label="Progress_AttentionControl_YearEnd">
+        <attvalues>
+          <attvalue for="0" value="Year-End Progress Goal" />
+        </attvalues>
+      </node>
+      <node id="Progress_SkillDevelopment_YearEnd" label="Progress_SkillDevelopment_YearEnd">
+        <attvalues>
+          <attvalue for="0" value="Year-End Progress Goal" />
+        </attvalues>
+      </node>
+      <node id="Progress_EmotionalRegulation_YearEnd" label="Progress_EmotionalRegulation_YearEnd">
+        <attvalues>
+          <attvalue for="0" value="Year-End Progress Goal" />
+        </attvalues>
+      </node>
+      <node id="Progress_IdentityConsistency_YearEnd" label="Progress_IdentityConsistency_YearEnd">
+        <attvalues>
+          <attvalue for="0" value="Year-End Progress Goal" />
+        </attvalues>
+      </node>
+      <node id="GOVERNMENT_OF_ASSAM" label="GOVERNMENT_OF_ASSAM">
+        <attvalues>
+          <attvalue for="0" value="GOVERNMENT_BODY" />
+        </attvalues>
+      </node>
+      <node id="PUBLIC_WORKS_DEPARTMENT_BUILDING" label="PUBLIC_WORKS_DEPARTMENT_BUILDING">
+        <attvalues>
+          <attvalue for="0" value="DEPARTMENT" />
+        </attvalues>
+      </node>
+      <node id="CHIEF_ENGINEER_PWD_BUILDING_ASSAM_OFFICE" label="CHIEF_ENGINEER_PWD_BUILDING_ASSAM_OFFICE">
+        <attvalues>
+          <attvalue for="0" value="OFFICE" />
+        </attvalues>
+      </node>
+      <node id="CHIEF_ENGINEER" label="CHIEF_ENGINEER">
+        <attvalues>
+          <attvalue for="0" value="ROLE" />
+        </attvalues>
+      </node>
+      <node id="GOVERNOR_OF_ASSAM" label="GOVERNOR_OF_ASSAM">
+        <attvalues>
+          <attvalue for="0" value="ROLE" />
+        </attvalues>
+      </node>
+      <node id="INTEGRATED_DC_OFFICE_CONSTRUCTION_PROJECT" label="INTEGRATED_DC_OFFICE_CONSTRUCTION_PROJECT">
+        <attvalues>
+          <attvalue for="0" value="PROJECT" />
+        </attvalues>
+      </node>
+      <node id="EPC_MODE_1_BASIS" label="EPC_MODE_1_BASIS">
+        <attvalues>
+          <attvalue for="0" value="CONTRACT_MODE" />
+        </attvalues>
+      </node>
+      <node id="INTEGRATED_DEPUTY_COMMISSIONER_OFFICE" label="INTEGRATED_DEPUTY_COMMISSIONER_OFFICE">
+        <attvalues>
+          <attvalue for="0" value="BUILDING_TYPE" />
+        </attvalues>
+      </node>
+      <node id="CACHAR_SILCHAR_ASSAM" label="CACHAR_SILCHAR_ASSAM">
+        <attvalues>
+          <attvalue for="0" value="LOCATION" />
+        </attvalues>
+      </node>
+      <node id="PLANNING_DESIGN_APPROVAL_PHASE" label="PLANNING_DESIGN_APPROVAL_PHASE">
+        <attvalues>
+          <attvalue for="0" value="PROJECT_PHASE" />
+        </attvalues>
+      </node>
+      <node id="EXECUTION_COMPLETION_PHASE" label="EXECUTION_COMPLETION_PHASE">
+        <attvalues>
+          <attvalue for="0" value="PROJECT_PHASE" />
+        </attvalues>
+      </node>
+      <node id="E_M_WORKS" label="E_M_WORKS">
+        <attvalues>
+          <attvalue for="0" value="SUB_PROJECT" />
+        </attvalues>
+      </node>
+      <node id="HORTICULTURE_WORK" label="HORTICULTURE_WORK">
+        <attvalues>
+          <attvalue for="0" value="SUB_PROJECT" />
+        </attvalues>
+      </node>
+      <node id="ESTIMATED_COST_TENDER" label="ESTIMATED_COST_TENDER">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="AMOUNT_41_44_06_450" label="AMOUNT_41_44_06_450">
+        <attvalues>
+          <attvalue for="0" value="AMOUNT" />
+        </attvalues>
+      </node>
+      <node id="BID_SECURITY" label="BID_SECURITY">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="BID_SECURITY_GENERAL_CATEGORY_2_PERCENT" label="BID_SECURITY_GENERAL_CATEGORY_2_PERCENT">
+        <attvalues>
+          <attvalue for="0" value="AMOUNT_DETAIL" />
+        </attvalues>
+      </node>
+      <node id="BID_SECURITY_RESERVED_CATEGORY_1_PERCENT" label="BID_SECURITY_RESERVED_CATEGORY_1_PERCENT">
+        <attvalues>
+          <attvalue for="0" value="AMOUNT_DETAIL" />
+        </attvalues>
+      </node>
+      <node id="COST_OF_BID_DOCUMENT" label="COST_OF_BID_DOCUMENT">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="AMOUNT_20_000" label="AMOUNT_20_000">
+        <attvalues>
+          <attvalue for="0" value="AMOUNT" />
+        </attvalues>
+      </node>
+      <node id="PERFORMANCE_GUARANTEE" label="PERFORMANCE_GUARANTEE">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="PERFORMANCE_GUARANTEE_5_PERCENT" label="PERFORMANCE_GUARANTEE_5_PERCENT">
+        <attvalues>
+          <attvalue for="0" value="AMOUNT_DETAIL" />
+        </attvalues>
+      </node>
+      <node id="VALUE_OF_SECURITY_DEPOSIT" label="VALUE_OF_SECURITY_DEPOSIT">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="SECURITY_DEPOSIT_2_5_PERCENT" label="SECURITY_DEPOSIT_2_5_PERCENT">
+        <attvalues>
+          <attvalue for="0" value="AMOUNT_DETAIL" />
+        </attvalues>
+      </node>
+      <node id="TENDERED_AMOUNT" label="TENDERED_AMOUNT">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_REFERENCE" />
+        </attvalues>
+      </node>
+      <node id="VALUE_OF_WORK" label="VALUE_OF_WORK">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_REFERENCE" />
+        </attvalues>
+      </node>
+      <node id="STAGE_PAYMENTS" label="STAGE_PAYMENTS">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="FINANCIAL_QUOTE" label="FINANCIAL_QUOTE">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="NOTICE_INVITING_E_TENDER" label="NOTICE_INVITING_E_TENDER">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="NIT_NO_CE_TB_IV_83_2021_10" label="NIT_NO_CE_TB_IV_83_2021_10">
+        <attvalues>
+          <attvalue for="0" value="IDENTIFIER" />
+        </attvalues>
+      </node>
+      <node id="DATE_16_11_2022" label="DATE_16_11_2022">
+        <attvalues>
+          <attvalue for="0" value="DATE" />
+        </attvalues>
+      </node>
+      <node id="BID_DOCUMENT" label="BID_DOCUMENT">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="OFFICE_MEMORANDUM_FEB_269_2017_27" label="OFFICE_MEMORANDUM_FEB_269_2017_27">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="DATE_21_08_2019" label="DATE_21_08_2019">
+        <attvalues>
+          <attvalue for="0" value="DATE" />
+        </attvalues>
+      </node>
+      <node id="PERIOD_OF_COMPLETION" label="PERIOD_OF_COMPLETION">
+        <attvalues>
+          <attvalue for="0" value="TIME_FRAME" />
+        </attvalues>
+      </node>
+      <node id="DURATION_30_MONTHS" label="DURATION_30_MONTHS">
+        <attvalues>
+          <attvalue for="0" value="DURATION" />
+        </attvalues>
+      </node>
+      <node id="DURATION_3_MONTHS_PLANNING" label="DURATION_3_MONTHS_PLANNING">
+        <attvalues>
+          <attvalue for="0" value="DURATION_DETAIL" />
+        </attvalues>
+      </node>
+      <node id="DURATION_27_MONTHS_EXECUTION" label="DURATION_27_MONTHS_EXECUTION">
+        <attvalues>
+          <attvalue for="0" value="DURATION_DETAIL" />
+        </attvalues>
+      </node>
+      <node id="INDEX_DOCUMENT_SECTION" label="INDEX_DOCUMENT_SECTION">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="PRESS_NOTICE_SECTION" label="PRESS_NOTICE_SECTION">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="PART_A_SECTION_I_GENERAL_INFORMATION" label="PART_A_SECTION_I_GENERAL_INFORMATION">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="CHECK_LIST_CONTRACTORS_BIDS" label="CHECK_LIST_CONTRACTORS_BIDS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="INFORMATION_INSTRUCTIONS_BIDDERS_E_BIDDING" label="INFORMATION_INSTRUCTIONS_BIDDERS_E_BIDDING">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="NOTICE_INVITING_BID_PWD_6" label="NOTICE_INVITING_BID_PWD_6">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="SECTION_II_TECHNICAL_BID" label="SECTION_II_TECHNICAL_BID">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="BRIEF_PARTICULARS_WORK" label="BRIEF_PARTICULARS_WORK">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="INFORMATION_GUIDELINES_BIDDERS" label="INFORMATION_GUIDELINES_BIDDERS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="ELIGIBILITY_EVALUATION_CRITERIA" label="ELIGIBILITY_EVALUATION_CRITERIA">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="LETTER_OF_TRANSMITTAL" label="LETTER_OF_TRANSMITTAL">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="FORM_A_TO_F" label="FORM_A_TO_F">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="DECLARATION_SITE_INSPECTION_FORM_H" label="DECLARATION_SITE_INSPECTION_FORM_H">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="AFFIDAVIT_NON_BLACKLISTING_FORM_I_J" label="AFFIDAVIT_NON_BLACKLISTING_FORM_I_J">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="DECLARATION_INTEGRITY_AGREEMENT" label="DECLARATION_INTEGRITY_AGREEMENT">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="INTEGRITY_PACT" label="INTEGRITY_PACT">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="SECTION_III_FINANCIAL_BID" label="SECTION_III_FINANCIAL_BID">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="PWD_8" label="PWD_8">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="SCHEDULE_A_F" label="SCHEDULE_A_F">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="APPENDIX_I_SITE_LAB_TESTING" label="APPENDIX_I_SITE_LAB_TESTING">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="APPENDIX_II_PLANT_EQUIPMENT" label="APPENDIX_II_PLANT_EQUIPMENT">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="CORRECTION_SLIP_DSR_2018" label="CORRECTION_SLIP_DSR_2018">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="DSR_2021" label="DSR_2021">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_REFERENCE" />
+        </attvalues>
+      </node>
+      <node id="STANDARD_GCC_EPC_PROJECT" label="STANDARD_GCC_EPC_PROJECT">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" label="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="BRIEF_SCOPE_USER_REQUIREMENT" label="BRIEF_SCOPE_USER_REQUIREMENT">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="MINIMUM_ACCEPTABLE_SPECIFICATIONS" label="MINIMUM_ACCEPTABLE_SPECIFICATIONS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="ARCHITECTURAL_CONSULTANCY" label="ARCHITECTURAL_CONSULTANCY">
+        <attvalues>
+          <attvalue for="0" value="SERVICE" />
+        </attvalues>
+      </node>
+      <node id="GENERAL_CONDITIONS" label="GENERAL_CONDITIONS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="ADDITIONAL_CONDITIONS" label="ADDITIONAL_CONDITIONS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="SPECIAL_CONDITIONS_CEMENT_STEEL" label="SPECIAL_CONDITIONS_CEMENT_STEEL">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="SPECIAL_CONDITION_POLLUTION_GREEN_BUILDING" label="SPECIAL_CONDITION_POLLUTION_GREEN_BUILDING">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="PARTICULAR_SPECIFICATIONS" label="PARTICULAR_SPECIFICATIONS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="GUARANTEE_BOND" label="GUARANTEE_BOND">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="SPECIAL_CONDITION_CONTRACT_VOL_1" label="SPECIAL_CONDITION_CONTRACT_VOL_1">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="PAR_2021_GCC_EPC_PROJECTS_VOL_1" label="PAR_2021_GCC_EPC_PROJECTS_VOL_1">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="DESIGN_BASIS_REPORT_TECHNICAL_SPECIFICATIONS" label="DESIGN_BASIS_REPORT_TECHNICAL_SPECIFICATIONS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="DESIGN_BASIS_REPORT_ARCHITECTURAL_STRUCTURAL_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" label="DESIGN_BASIS_REPORT_ARCHITECTURAL_STRUCTURAL_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="TECHNICAL_SPECIFICATIONS_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" label="TECHNICAL_SPECIFICATIONS_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="PART_C_ELECTRICAL_MECHANICAL_WORKS" label="PART_C_ELECTRICAL_MECHANICAL_WORKS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="GENERAL_INFORMATION_E_M_WORKS" label="GENERAL_INFORMATION_E_M_WORKS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="SCOPE_USER_REQUIREMENTS_TECHNICAL_SPECIFICATIONS_E_M" label="SCOPE_USER_REQUIREMENTS_TECHNICAL_SPECIFICATIONS_E_M">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="ELIGIBILITY_CRITERIA_E_M" label="ELIGIBILITY_CRITERIA_E_M">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="FORM_K_WILLINGNESS_CERTIFICATE" label="FORM_K_WILLINGNESS_CERTIFICATE">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="MEMORANDUM_OF_UNDERSTANDING" label="MEMORANDUM_OF_UNDERSTANDING">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="FORM_A_FINANCIAL_INFORMATION" label="FORM_A_FINANCIAL_INFORMATION">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="BANKERS_CERTIFICATE_FORM_B" label="BANKERS_CERTIFICATE_FORM_B">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="FORM_C_DETAILS_WORKS_COMPLETED" label="FORM_C_DETAILS_WORKS_COMPLETED">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="FORM_D_PERFORMANCE_REPORT" label="FORM_D_PERFORMANCE_REPORT">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="PART_C1_SPECIFICATION_EI_WORK" label="PART_C1_SPECIFICATION_EI_WORK">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="PART_D_HORTICULTURE_GREEN_BUILDING_CONDITIONS" label="PART_D_HORTICULTURE_GREEN_BUILDING_CONDITIONS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="SCOPE_SPECIFICATION_HORTICULTURE_WORK" label="SCOPE_SPECIFICATION_HORTICULTURE_WORK">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="CONDITIONS_CONTRACT_GREEN_BUILDING_PRACTICE" label="CONDITIONS_CONTRACT_GREEN_BUILDING_PRACTICE">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="PART_F_SCHEDULE_STAGE_PAYMENTS" label="PART_F_SCHEDULE_STAGE_PAYMENTS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="PAYMENT_SCHEDULE_WORK" label="PAYMENT_SCHEDULE_WORK">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="PART_G_FINANCIAL_QUOTE" label="PART_G_FINANCIAL_QUOTE">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="SCHEDULE_OF_QUANTITIES" label="SCHEDULE_OF_QUANTITIES">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="DRAWINGS_AND_REPORTS" label="DRAWINGS_AND_REPORTS">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_SECTION" />
+        </attvalues>
+      </node>
+      <node id="FINISHING_SCHEDULE_DRAWINGS_VOL_3" label="FINISHING_SCHEDULE_DRAWINGS_VOL_3">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="SOIL_TEST_REPORT_LOM_VOL_4" label="SOIL_TEST_REPORT_LOM_VOL_4">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT" />
+        </attvalues>
+      </node>
+      <node id="CHANDMARI_GUWAHATI_3" label="CHANDMARI_GUWAHATI_3">
+        <attvalues>
+          <attvalue for="0" value="LOCATION" />
+        </attvalues>
+      </node>
+      <node id="TWO_BID_SYSTEM_ELIGIBILITY_FINANCIAL" label="TWO_BID_SYSTEM_ELIGIBILITY_FINANCIAL">
+        <attvalues>
+          <attvalue for="0" value="BID_SYSTEM" />
+        </attvalues>
+      </node>
+      <node id="FIRMS_CONTRACTORS" label="FIRMS_CONTRACTORS">
+        <attvalues>
+          <attvalue for="0" value="PARTY" />
+        </attvalues>
+      </node>
+      <node id="GENERAL_CATEGORY" label="GENERAL_CATEGORY">
+        <attvalues>
+          <attvalue for="0" value="CATEGORY" />
+        </attvalues>
+      </node>
+      <node id="RESERVED_CATEGORY" label="RESERVED_CATEGORY">
+        <attvalues>
+          <attvalue for="0" value="CATEGORY" />
+        </attvalues>
+      </node>
+      <node id="BIDDERS" label="BIDDERS">
+        <attvalues>
+          <attvalue for="0" value="PARTY" />
+        </attvalues>
+      </node>
+      <node id="NET_BANKING" label="NET_BANKING">
+        <attvalues>
+          <attvalue for="0" value="PAYMENT_METHOD" />
+        </attvalues>
+      </node>
+      <node id="RTGS_NEFT" label="RTGS_NEFT">
+        <attvalues>
+          <attvalue for="0" value="PAYMENT_METHOD" />
+        </attvalues>
+      </node>
+      <node id="MATERIAL" label="MATERIAL">
+        <attvalues>
+          <attvalue for="0" value="MATERIAL" />
+        </attvalues>
+      </node>
+      <node id="PLANT_AND_EQUIPMENT" label="PLANT_AND_EQUIPMENT">
+        <attvalues>
+          <attvalue for="0" value="EQUIPMENT" />
+        </attvalues>
+      </node>
+      <node id="CEMENT" label="CEMENT">
+        <attvalues>
+          <attvalue for="0" value="MATERIAL" />
+        </attvalues>
+      </node>
+      <node id="STEEL" label="STEEL">
+        <attvalues>
+          <attvalue for="0" value="MATERIAL" />
+        </attvalues>
+      </node>
+      <node id="POLLUTION_CONTROL" label="POLLUTION_CONTROL">
+        <attvalues>
+          <attvalue for="0" value="CONDITION" />
+        </attvalues>
+      </node>
+      <node id="GREEN_BUILDING_CONDITIONS" label="GREEN_BUILDING_CONDITIONS">
+        <attvalues>
+          <attvalue for="0" value="CONDITION" />
+        </attvalues>
+      </node>
+      <node id="GREEN_BUILDING_PRACTICE" label="GREEN_BUILDING_PRACTICE">
+        <attvalues>
+          <attvalue for="0" value="CONDITION" />
+        </attvalues>
+      </node>
+      <node id="ARCHITECTURAL_DISCIPLINE" label="ARCHITECTURAL_DISCIPLINE">
+        <attvalues>
+          <attvalue for="0" value="DISCIPLINE" />
+        </attvalues>
+      </node>
+      <node id="STRUCTURAL_DISCIPLINE" label="STRUCTURAL_DISCIPLINE">
+        <attvalues>
+          <attvalue for="0" value="DISCIPLINE" />
+        </attvalues>
+      </node>
+      <node id="ELECTRICAL_DISCIPLINE" label="ELECTRICAL_DISCIPLINE">
+        <attvalues>
+          <attvalue for="0" value="DISCIPLINE" />
+        </attvalues>
+      </node>
+      <node id="HVAC_DISCIPLINE" label="HVAC_DISCIPLINE">
+        <attvalues>
+          <attvalue for="0" value="DISCIPLINE" />
+        </attvalues>
+      </node>
+      <node id="PLUMBING_DISCIPLINE" label="PLUMBING_DISCIPLINE">
+        <attvalues>
+          <attvalue for="0" value="DISCIPLINE" />
+        </attvalues>
+      </node>
+      <node id="FIREFIGHTING_DISCIPLINE" label="FIREFIGHTING_DISCIPLINE">
+        <attvalues>
+          <attvalue for="0" value="DISCIPLINE" />
+        </attvalues>
+      </node>
+      <node id="EI_WORK_DISCIPLINE" label="EI_WORK_DISCIPLINE">
+        <attvalues>
+          <attvalue for="0" value="DISCIPLINE" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="BECOMING A MAN — 2026" target="Lifestyle Hygiene" id="0" label="defines_priority_aspect" />
+      <edge source="BECOMING A MAN — 2026" target="Body Recovery &amp; Regulation" id="1" label="defines_priority_aspect" />
+      <edge source="BECOMING A MAN — 2026" target="Attention Control / Focus" id="2" label="defines_priority_aspect" />
+      <edge source="BECOMING A MAN — 2026" target="Skill Development (Leverage Skills)" id="3" label="defines_priority_aspect" />
+      <edge source="BECOMING A MAN — 2026" target="Emotional Regulation" id="4" label="defines_priority_aspect" />
+      <edge source="BECOMING A MAN — 2026" target="Identity Consistency" id="5" label="defines_priority_aspect" />
+      <edge source="Lifestyle Hygiene" target="Rating_LifestyleHygiene_5" id="6" label="has_current_rating" />
+      <edge source="Lifestyle Hygiene" target="Progress_LifestyleHygiene_YearEnd" id="7" label="defines_year_end_progress_as" />
+      <edge source="Body Recovery &amp; Regulation" target="Rating_BodyRecovery_5" id="8" label="has_current_rating" />
+      <edge source="Body Recovery &amp; Regulation" target="Progress_BodyRecovery_YearEnd" id="9" label="defines_year_end_progress_as" />
+      <edge source="Attention Control / Focus" target="Rating_AttentionControl_4" id="10" label="has_current_rating" />
+      <edge source="Attention Control / Focus" target="Progress_AttentionControl_YearEnd" id="11" label="defines_year_end_progress_as" />
+      <edge source="Skill Development (Leverage Skills)" target="Rating_SkillDevelopment_4" id="12" label="has_current_rating" />
+      <edge source="Skill Development (Leverage Skills)" target="Progress_SkillDevelopment_YearEnd" id="13" label="defines_year_end_progress_as" />
+      <edge source="Emotional Regulation" target="Rating_EmotionalRegulation_7" id="14" label="has_current_rating" />
+      <edge source="Emotional Regulation" target="Progress_EmotionalRegulation_YearEnd" id="15" label="defines_year_end_progress_as" />
+      <edge source="Identity Consistency" target="Rating_IdentityConsistency_6" id="16" label="has_current_rating" />
+      <edge source="Identity Consistency" target="Progress_IdentityConsistency_YearEnd" id="17" label="defines_year_end_progress_as" />
+      <edge source="GOVERNMENT_OF_ASSAM" target="PUBLIC_WORKS_DEPARTMENT_BUILDING" id="18" label="HAS_DEPARTMENT" />
+      <edge source="PUBLIC_WORKS_DEPARTMENT_BUILDING" target="CHIEF_ENGINEER_PWD_BUILDING_ASSAM_OFFICE" id="19" label="HAS_OFFICE" />
+      <edge source="PUBLIC_WORKS_DEPARTMENT_BUILDING" target="GOVERNOR_OF_ASSAM" id="20" label="ACTS_ON_BEHALF_OF" />
+      <edge source="CHIEF_ENGINEER_PWD_BUILDING_ASSAM_OFFICE" target="CHIEF_ENGINEER" id="21" label="HEADED_BY" />
+      <edge source="CHIEF_ENGINEER_PWD_BUILDING_ASSAM_OFFICE" target="CHANDMARI_GUWAHATI_3" id="22" label="LOCATED_AT" />
+      <edge source="CHIEF_ENGINEER" target="NOTICE_INVITING_E_TENDER" id="23" label="INVITES" />
+      <edge source="CHIEF_ENGINEER" target="PUBLIC_WORKS_DEPARTMENT_BUILDING" id="24" label="ACTS_ON_BEHALF_OF" />
+      <edge source="INTEGRATED_DC_OFFICE_CONSTRUCTION_PROJECT" target="CACHAR_SILCHAR_ASSAM" id="25" label="LOCATED_AT" />
+      <edge source="INTEGRATED_DC_OFFICE_CONSTRUCTION_PROJECT" target="EPC_MODE_1_BASIS" id="26" label="OPERATES_ON_MODE" />
+      <edge source="INTEGRATED_DC_OFFICE_CONSTRUCTION_PROJECT" target="ESTIMATED_COST_TENDER" id="27" label="HAS_ESTIMATED_COST" />
+      <edge source="INTEGRATED_DC_OFFICE_CONSTRUCTION_PROJECT" target="PERIOD_OF_COMPLETION" id="28" label="HAS_PERIOD_OF_COMPLETION" />
+      <edge source="INTEGRATED_DC_OFFICE_CONSTRUCTION_PROJECT" target="E_M_WORKS" id="29" label="INCLUDES_SUB_PROJECT" />
+      <edge source="INTEGRATED_DC_OFFICE_CONSTRUCTION_PROJECT" target="HORTICULTURE_WORK" id="30" label="INCLUDES_SUB_PROJECT" />
+      <edge source="ESTIMATED_COST_TENDER" target="AMOUNT_41_44_06_450" id="31" label="HAS_VALUE" />
+      <edge source="BID_SECURITY" target="BID_SECURITY_GENERAL_CATEGORY_2_PERCENT" id="32" label="FOR_CATEGORY" />
+      <edge source="BID_SECURITY" target="BID_SECURITY_RESERVED_CATEGORY_1_PERCENT" id="33" label="FOR_CATEGORY" />
+      <edge source="BID_SECURITY_GENERAL_CATEGORY_2_PERCENT" target="VALUE_OF_WORK" id="34" label="PERCENTAGE_OF" />
+      <edge source="BID_SECURITY_RESERVED_CATEGORY_1_PERCENT" target="VALUE_OF_WORK" id="35" label="PERCENTAGE_OF" />
+      <edge source="COST_OF_BID_DOCUMENT" target="AMOUNT_20_000" id="36" label="HAS_VALUE" />
+      <edge source="COST_OF_BID_DOCUMENT" target="NET_BANKING" id="37" label="DEPOSITED_VIA" />
+      <edge source="COST_OF_BID_DOCUMENT" target="RTGS_NEFT" id="38" label="DEPOSITED_VIA" />
+      <edge source="COST_OF_BID_DOCUMENT" target="OFFICE_MEMORANDUM_FEB_269_2017_27" id="39" label="AS_PER" />
+      <edge source="PERFORMANCE_GUARANTEE" target="PERFORMANCE_GUARANTEE_5_PERCENT" id="40" label="HAS_DETAIL" />
+      <edge source="PERFORMANCE_GUARANTEE_5_PERCENT" target="TENDERED_AMOUNT" id="41" label="PERCENTAGE_OF" />
+      <edge source="VALUE_OF_SECURITY_DEPOSIT" target="SECURITY_DEPOSIT_2_5_PERCENT" id="42" label="HAS_DETAIL" />
+      <edge source="SECURITY_DEPOSIT_2_5_PERCENT" target="TENDERED_AMOUNT" id="43" label="PERCENTAGE_OF" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="NIT_NO_CE_TB_IV_83_2021_10" id="44" label="HAS_IDENTIFIER" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="DATE_16_11_2022" id="45" label="ISSUED_ON" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="INTEGRATED_DC_OFFICE_CONSTRUCTION_PROJECT" id="46" label="FOR_WORK" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="BID_SECURITY" id="47" label="REQUIRES" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="COST_OF_BID_DOCUMENT" id="48" label="REQUIRES" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="PERFORMANCE_GUARANTEE" id="49" label="REQUIRES" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="VALUE_OF_SECURITY_DEPOSIT" id="50" label="REQUIRES" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="FIRMS_CONTRACTORS" id="51" label="INVITES" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="TWO_BID_SYSTEM_ELIGIBILITY_FINANCIAL" id="52" label="USES_BID_SYSTEM" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="INDEX_DOCUMENT_SECTION" id="53" label="CONTAINS_SECTION" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="PRESS_NOTICE_SECTION" id="54" label="CONTAINS_SECTION" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="PART_A_SECTION_I_GENERAL_INFORMATION" id="55" label="CONTAINS_SECTION" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="SECTION_II_TECHNICAL_BID" id="56" label="CONTAINS_SECTION" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="SECTION_III_FINANCIAL_BID" id="57" label="CONTAINS_SECTION" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" id="58" label="CONTAINS_SECTION" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="PART_C_ELECTRICAL_MECHANICAL_WORKS" id="59" label="CONTAINS_SECTION" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="PART_D_HORTICULTURE_GREEN_BUILDING_CONDITIONS" id="60" label="CONTAINS_SECTION" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="PART_F_SCHEDULE_STAGE_PAYMENTS" id="61" label="CONTAINS_SECTION" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="PART_G_FINANCIAL_QUOTE" id="62" label="CONTAINS_SECTION" />
+      <edge source="NOTICE_INVITING_E_TENDER" target="DRAWINGS_AND_REPORTS" id="63" label="CONTAINS_SECTION" />
+      <edge source="OFFICE_MEMORANDUM_FEB_269_2017_27" target="DATE_21_08_2019" id="64" label="DATED_ON" />
+      <edge source="PERIOD_OF_COMPLETION" target="DURATION_30_MONTHS" id="65" label="HAS_DURATION" />
+      <edge source="DURATION_30_MONTHS" target="PLANNING_DESIGN_APPROVAL_PHASE" id="66" label="INCLUDES_PHASE" />
+      <edge source="DURATION_30_MONTHS" target="EXECUTION_COMPLETION_PHASE" id="67" label="INCLUDES_PHASE" />
+      <edge source="DURATION_3_MONTHS_PLANNING" target="PLANNING_DESIGN_APPROVAL_PHASE" id="68" label="CORRESPONDS_TO" />
+      <edge source="DURATION_27_MONTHS_EXECUTION" target="EXECUTION_COMPLETION_PHASE" id="69" label="CORRESPONDS_TO" />
+      <edge source="PART_A_SECTION_I_GENERAL_INFORMATION" target="CHECK_LIST_CONTRACTORS_BIDS" id="70" label="INCLUDES" />
+      <edge source="PART_A_SECTION_I_GENERAL_INFORMATION" target="INFORMATION_INSTRUCTIONS_BIDDERS_E_BIDDING" id="71" label="INCLUDES" />
+      <edge source="PART_A_SECTION_I_GENERAL_INFORMATION" target="NOTICE_INVITING_BID_PWD_6" id="72" label="INCLUDES" />
+      <edge source="SECTION_II_TECHNICAL_BID" target="BRIEF_PARTICULARS_WORK" id="73" label="INCLUDES" />
+      <edge source="SECTION_II_TECHNICAL_BID" target="INFORMATION_GUIDELINES_BIDDERS" id="74" label="INCLUDES" />
+      <edge source="SECTION_II_TECHNICAL_BID" target="ELIGIBILITY_EVALUATION_CRITERIA" id="75" label="INCLUDES" />
+      <edge source="SECTION_II_TECHNICAL_BID" target="LETTER_OF_TRANSMITTAL" id="76" label="INCLUDES" />
+      <edge source="SECTION_II_TECHNICAL_BID" target="FORM_A_TO_F" id="77" label="INCLUDES" />
+      <edge source="SECTION_II_TECHNICAL_BID" target="DECLARATION_SITE_INSPECTION_FORM_H" id="78" label="INCLUDES" />
+      <edge source="SECTION_II_TECHNICAL_BID" target="AFFIDAVIT_NON_BLACKLISTING_FORM_I_J" id="79" label="INCLUDES" />
+      <edge source="SECTION_II_TECHNICAL_BID" target="DECLARATION_INTEGRITY_AGREEMENT" id="80" label="INCLUDES" />
+      <edge source="SECTION_II_TECHNICAL_BID" target="INTEGRITY_PACT" id="81" label="INCLUDES" />
+      <edge source="SECTION_III_FINANCIAL_BID" target="PWD_8" id="82" label="INCLUDES" />
+      <edge source="SECTION_III_FINANCIAL_BID" target="SCHEDULE_A_F" id="83" label="INCLUDES" />
+      <edge source="SECTION_III_FINANCIAL_BID" target="APPENDIX_I_SITE_LAB_TESTING" id="84" label="INCLUDES" />
+      <edge source="SECTION_III_FINANCIAL_BID" target="APPENDIX_II_PLANT_EQUIPMENT" id="85" label="INCLUDES" />
+      <edge source="SECTION_III_FINANCIAL_BID" target="CORRECTION_SLIP_DSR_2018" id="86" label="INCLUDES" />
+      <edge source="SECTION_III_FINANCIAL_BID" target="STANDARD_GCC_EPC_PROJECT" id="87" label="INCLUDES" />
+      <edge source="APPENDIX_I_SITE_LAB_TESTING" target="MATERIAL" id="88" label="FOR_MATERIAL" />
+      <edge source="APPENDIX_II_PLANT_EQUIPMENT" target="PLANT_AND_EQUIPMENT" id="89" label="FOR_EQUIPMENT" />
+      <edge source="CORRECTION_SLIP_DSR_2018" target="DSR_2021" id="90" label="MODIFIES_REFERENCE_TO" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="BRIEF_SCOPE_USER_REQUIREMENT" id="91" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="MINIMUM_ACCEPTABLE_SPECIFICATIONS" id="92" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="ARCHITECTURAL_CONSULTANCY" id="93" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="GENERAL_CONDITIONS" id="94" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="ADDITIONAL_CONDITIONS" id="95" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="SPECIAL_CONDITIONS_CEMENT_STEEL" id="96" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="SPECIAL_CONDITION_POLLUTION_GREEN_BUILDING" id="97" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="PARTICULAR_SPECIFICATIONS" id="98" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="GUARANTEE_BOND" id="99" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="SPECIAL_CONDITION_CONTRACT_VOL_1" id="100" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="PAR_2021_GCC_EPC_PROJECTS_VOL_1" id="101" label="INCLUDES" />
+      <edge source="PART_B_SCOPE_WORK_TECHNICAL_SPECIFICATION" target="DESIGN_BASIS_REPORT_TECHNICAL_SPECIFICATIONS" id="102" label="INCLUDES" />
+      <edge source="SPECIAL_CONDITIONS_CEMENT_STEEL" target="CEMENT" id="103" label="FOR_MATERIAL" />
+      <edge source="SPECIAL_CONDITIONS_CEMENT_STEEL" target="STEEL" id="104" label="FOR_MATERIAL" />
+      <edge source="SPECIAL_CONDITION_POLLUTION_GREEN_BUILDING" target="POLLUTION_CONTROL" id="105" label="COVERS" />
+      <edge source="SPECIAL_CONDITION_POLLUTION_GREEN_BUILDING" target="GREEN_BUILDING_CONDITIONS" id="106" label="COVERS" />
+      <edge source="DESIGN_BASIS_REPORT_TECHNICAL_SPECIFICATIONS" target="DESIGN_BASIS_REPORT_ARCHITECTURAL_STRUCTURAL_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" id="107" label="COMPRISES" />
+      <edge source="DESIGN_BASIS_REPORT_TECHNICAL_SPECIFICATIONS" target="TECHNICAL_SPECIFICATIONS_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" id="108" label="COMPRISES" />
+      <edge source="DESIGN_BASIS_REPORT_ARCHITECTURAL_STRUCTURAL_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" target="ARCHITECTURAL_DISCIPLINE" id="109" label="COVERS_DISCIPLINE" />
+      <edge source="DESIGN_BASIS_REPORT_ARCHITECTURAL_STRUCTURAL_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" target="STRUCTURAL_DISCIPLINE" id="110" label="COVERS_DISCIPLINE" />
+      <edge source="DESIGN_BASIS_REPORT_ARCHITECTURAL_STRUCTURAL_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" target="ELECTRICAL_DISCIPLINE" id="111" label="COVERS_DISCIPLINE" />
+      <edge source="DESIGN_BASIS_REPORT_ARCHITECTURAL_STRUCTURAL_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" target="HVAC_DISCIPLINE" id="112" label="COVERS_DISCIPLINE" />
+      <edge source="DESIGN_BASIS_REPORT_ARCHITECTURAL_STRUCTURAL_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" target="PLUMBING_DISCIPLINE" id="113" label="COVERS_DISCIPLINE" />
+      <edge source="DESIGN_BASIS_REPORT_ARCHITECTURAL_STRUCTURAL_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" target="FIREFIGHTING_DISCIPLINE" id="114" label="COVERS_DISCIPLINE" />
+      <edge source="TECHNICAL_SPECIFICATIONS_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" target="ELECTRICAL_DISCIPLINE" id="115" label="COVERS_DISCIPLINE" />
+      <edge source="TECHNICAL_SPECIFICATIONS_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" target="HVAC_DISCIPLINE" id="116" label="COVERS_DISCIPLINE" />
+      <edge source="TECHNICAL_SPECIFICATIONS_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" target="PLUMBING_DISCIPLINE" id="117" label="COVERS_DISCIPLINE" />
+      <edge source="TECHNICAL_SPECIFICATIONS_ELECTRICAL_HVAC_PLUMBING_FIREFIGHTING" target="FIREFIGHTING_DISCIPLINE" id="118" label="COVERS_DISCIPLINE" />
+      <edge source="PART_C_ELECTRICAL_MECHANICAL_WORKS" target="GENERAL_INFORMATION_E_M_WORKS" id="119" label="INCLUDES" />
+      <edge source="PART_C_ELECTRICAL_MECHANICAL_WORKS" target="SCOPE_USER_REQUIREMENTS_TECHNICAL_SPECIFICATIONS_E_M" id="120" label="INCLUDES" />
+      <edge source="PART_C_ELECTRICAL_MECHANICAL_WORKS" target="ELIGIBILITY_CRITERIA_E_M" id="121" label="INCLUDES" />
+      <edge source="PART_C_ELECTRICAL_MECHANICAL_WORKS" target="FORM_K_WILLINGNESS_CERTIFICATE" id="122" label="INCLUDES" />
+      <edge source="PART_C_ELECTRICAL_MECHANICAL_WORKS" target="MEMORANDUM_OF_UNDERSTANDING" id="123" label="INCLUDES" />
+      <edge source="PART_C_ELECTRICAL_MECHANICAL_WORKS" target="FORM_A_FINANCIAL_INFORMATION" id="124" label="INCLUDES" />
+      <edge source="PART_C_ELECTRICAL_MECHANICAL_WORKS" target="BANKERS_CERTIFICATE_FORM_B" id="125" label="INCLUDES" />
+      <edge source="PART_C_ELECTRICAL_MECHANICAL_WORKS" target="FORM_C_DETAILS_WORKS_COMPLETED" id="126" label="INCLUDES" />
+      <edge source="PART_C_ELECTRICAL_MECHANICAL_WORKS" target="FORM_D_PERFORMANCE_REPORT" id="127" label="INCLUDES" />
+      <edge source="PART_C_ELECTRICAL_MECHANICAL_WORKS" target="PART_C1_SPECIFICATION_EI_WORK" id="128" label="INCLUDES" />
+      <edge source="PART_C1_SPECIFICATION_EI_WORK" target="EI_WORK_DISCIPLINE" id="129" label="COVERS_DISCIPLINE" />
+      <edge source="PART_D_HORTICULTURE_GREEN_BUILDING_CONDITIONS" target="SCOPE_SPECIFICATION_HORTICULTURE_WORK" id="130" label="INCLUDES" />
+      <edge source="PART_D_HORTICULTURE_GREEN_BUILDING_CONDITIONS" target="CONDITIONS_CONTRACT_GREEN_BUILDING_PRACTICE" id="131" label="INCLUDES" />
+      <edge source="CONDITIONS_CONTRACT_GREEN_BUILDING_PRACTICE" target="GREEN_BUILDING_PRACTICE" id="132" label="COVERS" />
+      <edge source="PART_F_SCHEDULE_STAGE_PAYMENTS" target="PAYMENT_SCHEDULE_WORK" id="133" label="INCLUDES" />
+      <edge source="PAYMENT_SCHEDULE_WORK" target="STAGE_PAYMENTS" id="134" label="DETAILS" />
+      <edge source="PART_G_FINANCIAL_QUOTE" target="SCHEDULE_OF_QUANTITIES" id="135" label="INCLUDES" />
+      <edge source="DRAWINGS_AND_REPORTS" target="FINISHING_SCHEDULE_DRAWINGS_VOL_3" id="136" label="INCLUDES" />
+      <edge source="DRAWINGS_AND_REPORTS" target="SOIL_TEST_REPORT_LOM_VOL_4" id="137" label="INCLUDES" />
+      <edge source="FIRMS_CONTRACTORS" target="BIDDERS" id="138" label="ARE_ALSO" />
+    </edges>
+  </graph>
+</gexf>
