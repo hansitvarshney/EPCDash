@@ -6,6 +6,19 @@ Replaces the old monolithic `parser_agent.py`. All route logic now lives in
 LangGraph pipeline under `backend/workflow/`, and all workbook I/O goes
 through `backend/excel_service/`.
 """
+import os
+import sys
+
+# --- sys.path fallback -----------------------------------------------------
+# Some deployment hosts (e.g. Railway/Nixpacks) launch this module with a
+# working directory or root that does not put the repository root on
+# `sys.path`, which breaks every `from backend.xxx import ...` below with
+# `ModuleNotFoundError: No module named 'backend'`. Explicitly prepend the
+# repo root (the parent of this `backend/` package) so imports resolve
+# correctly no matter how/where the process is started from.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# -----------------------------------------------------------------------------
+
 from pathlib import Path
 from dotenv import load_dotenv
 
