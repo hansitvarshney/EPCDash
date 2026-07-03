@@ -4,7 +4,7 @@ import networkx as nx
 from google import genai
 from google.genai import types
 from sqlalchemy.orm import Session
-from backend.database import ProjectDocument
+from backend.models import ProjectDocument
 from pypdf import PdfReader  # 📄 Added for PDF handling
 
 # Initialize the Gemini Client

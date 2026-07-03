@@ -11,4 +11,11 @@ __pycache__/
 
 # Application Generated Outputs & Runtime Logs
 outputs/
-*.logbackend/service_account.json
+templates/
+*.log
+
+# Google service account credentials
+backend/service_account.json
+
+# Next.js local env overrides
+frontend/.env.local
