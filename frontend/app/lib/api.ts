@@ -157,12 +157,27 @@ export function downloadFileUrl(downloadUrl: string): string {
   return `${BASE_URL}${downloadUrl}`;
 }
 
-export async function ingestDocument(siteId: number, category: string, file: File): Promise<{ status: string; exceptions_raised: number; excel_output_path: string }> {
+export interface IngestCategoryResult {
+  category: string;
+  status: 'success' | 'error';
+  document_id?: number;
+  excel_output_path?: string;
+  exceptions_raised?: number;
+  error?: string;
+}
+
+export interface IngestResponse {
+  status: 'success' | 'partial_success' | 'error';
+  file_name: string;
+  results: IngestCategoryResult[];
+}
+
+export async function ingestDocument(siteId: number, categories: string[], file: File): Promise<IngestResponse> {
   const formData = new FormData();
-  formData.append('category', category);
+  categories.forEach((category) => formData.append('categories', category));
   formData.append('file', file);
   const res = await fetch(`${BASE_URL}/api/v1/sites/${siteId}/ingest`, { method: 'POST', body: formData });
-  return handle(res);
+  return handle<IngestResponse>(res);
 }
 
 export async function uploadReferenceDocument(siteId: number, file: File): Promise<{ status: string; file_name: string }> {

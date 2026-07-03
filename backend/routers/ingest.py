@@ -1,6 +1,7 @@
 import os
 import traceback
 from pathlib import Path
+from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
@@ -28,18 +29,25 @@ def _get_or_create_site(db: Session, site_id: int) -> Project:
 @router.post("/{site_id}/ingest")
 async def ingest_site_document(
     site_id: int,
-    category: str = Form(...),
+    categories: List[str] = Form(...),
     file: UploadFile = File(...),
     db: Session = Depends(get_db),
 ):
     """
     Runs the full 4-node LangGraph pipeline (Ingestion & Audit Trail ->
     Extraction -> Validation/Judge -> Excel Writer) against one uploaded
-    document for a given operational category.
+    document, once per selected operational category. This supports
+    multi-sheet documents that pack more than one ledger's worth of data
+    (e.g. a combined DPR + Material sheet) into a single upload -- the same
+    file bytes are re-run through the category-specific extraction schema
+    for each selection, and results are aggregated into one response.
     """
-    category = category.upper()
-    if category not in VALID_CATEGORIES:
-        raise HTTPException(status_code=400, detail=f"Invalid category '{category}'. Must be one of {sorted(VALID_CATEGORIES)}.")
+    normalized_categories = [c.strip().upper() for c in categories if c.strip()]
+    if not normalized_categories:
+        raise HTTPException(status_code=400, detail="At least one category must be selected.")
+    invalid = sorted(set(normalized_categories) - VALID_CATEGORIES)
+    if invalid:
+        raise HTTPException(status_code=400, detail=f"Invalid categories {invalid}. Must be one of {sorted(VALID_CATEGORIES)}.")
 
     _get_or_create_site(db, site_id)
 
@@ -47,31 +55,47 @@ async def ingest_site_document(
     suffix = Path(file.filename).suffix.lower()
     mime_type = "application/pdf" if suffix == ".pdf" else ("image/png" if suffix == ".png" else "image/jpeg")
 
-    try:
-        result_state = run_ingest_workflow(
-            db=db,
-            project_id=site_id,
-            category=category,
-            file_name=file.filename,
-            file_bytes=file_bytes,
-            mime_type=mime_type,
+    results = []
+    for category in normalized_categories:
+        try:
+            result_state = run_ingest_workflow(
+                db=db,
+                project_id=site_id,
+                category=category,
+                file_name=file.filename,
+                file_bytes=file_bytes,
+                mime_type=mime_type,
+            )
+        except Exception as exc:
+            db.rollback()
+            traceback.print_exc()
+            results.append({"category": category, "status": "error", "error": f"Ingestion pipeline fault: {exc}"})
+            continue
+
+        if result_state.error:
+            results.append({"category": category, "status": "error", "error": result_state.error})
+            continue
+
+        results.append(
+            {
+                "category": category,
+                "status": "success",
+                "document_id": result_state.document_id,
+                "excel_output_path": result_state.excel_output_path,
+                "exceptions_raised": len(result_state.exceptions),
+                "audit_trail": result_state.audit_trail,
+            }
         )
-    except Exception as exc:
-        db.rollback()
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=f"Ingestion pipeline fault: {exc}")
 
-    if result_state.error:
-        raise HTTPException(status_code=422, detail=result_state.error)
+    success_count = sum(1 for r in results if r["status"] == "success")
+    if success_count == len(results):
+        overall_status = "success"
+    elif success_count == 0:
+        overall_status = "error"
+    else:
+        overall_status = "partial_success"
 
-    return {
-        "status": "success",
-        "document_id": result_state.document_id,
-        "category": category,
-        "excel_output_path": result_state.excel_output_path,
-        "exceptions_raised": len(result_state.exceptions),
-        "audit_trail": result_state.audit_trail,
-    }
+    return {"status": overall_status, "file_name": file.filename, "results": results}
 
 
 @router.post("/{site_id}/documents")
