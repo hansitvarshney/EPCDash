@@ -19,6 +19,10 @@ class Project(Base):
     contract_value = Column(Float, nullable=True)
     start_date = Column(String, nullable=True)
     target_end_date = Column(String, nullable=True)
+    # Recipient for outbound WhatsApp alerts (milestone-eligibility pings,
+    # drafted RA Bill emails). Nullable -- see whatsapp_client.py, which
+    # logs to OutboundMessageLog instead of failing when unset.
+    principal_whatsapp_number = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Note: health_status (On Track / At Risk / Action Required) is NOT a
@@ -33,3 +37,6 @@ class Project(Base):
     drawings = relationship("Drawing", back_populates="project", cascade="all, delete-orphan")
     exceptions = relationship("ExceptionAlert", back_populates="project", cascade="all, delete-orphan")
     audit_logs = relationship("IngestionAuditLog", back_populates="project", cascade="all, delete-orphan")
+    milestones = relationship("ProjectMilestone", back_populates="project", cascade="all, delete-orphan")
+    daily_expenses = relationship("DailyExpenseLog", back_populates="project", cascade="all, delete-orphan")
+    payment_milestones = relationship("PaymentMilestone", back_populates="project", cascade="all, delete-orphan")

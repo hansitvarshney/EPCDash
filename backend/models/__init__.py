@@ -18,6 +18,10 @@ from backend.models.material_ledger import MaterialMaster, MaterialLedgerEntry
 from backend.models.billing import Vendor, BillingMilestone, BillingStatus
 from backend.models.drawings import Drawing, SignoffStatus
 from backend.models.exceptions import ExceptionAlert, ExceptionCategory, ExceptionSeverity
+from backend.models.schedule import ProjectMilestone, MilestoneStatus
+from backend.models.expenses import DailyExpenseLog
+from backend.models.payment_milestones import PaymentMilestone, PaymentMilestoneStatus
+from backend.models.outbound_log import OutboundMessageLog
 
 __all__ = [
     "Project",
@@ -38,4 +42,10 @@ __all__ = [
     "ExceptionAlert",
     "ExceptionCategory",
     "ExceptionSeverity",
+    "ProjectMilestone",
+    "MilestoneStatus",
+    "DailyExpenseLog",
+    "PaymentMilestone",
+    "PaymentMilestoneStatus",
+    "OutboundMessageLog",
 ]

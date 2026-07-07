@@ -27,9 +27,13 @@ from backend.models import (
     ExceptionAlert,
     ExceptionCategory,
     ExceptionSeverity,
+    ProjectMilestone,
+    MilestoneStatus,
+    PaymentMilestone,
 )
 from backend.excel_service.writer import ExcelWriterService
 from backend.workflow.state import IngestState, ExceptionDraft
+from backend.milestone_service import sync_payment_milestone_eligibility, notify_payment_milestone_eligible
 
 NODE_NAME = "excel_writer"
 
@@ -238,6 +242,124 @@ _WRITERS = {
 }
 
 
+def _resolve_latest_tender_document_id(db: Session, project_id: int):
+    doc = (
+        db.query(ProjectDocument)
+        .filter(ProjectDocument.project_id == project_id, ProjectDocument.file_category == "TENDER_AGREEMENT")
+        .order_by(ProjectDocument.uploaded_at.desc())
+        .first()
+    )
+    return doc.id if doc else None
+
+
+def _write_schedule(db: Session, state: IngestState, document) -> dict:
+    """
+    SCHEDULE bypasses ExcelWriterService entirely -- there's no generated
+    output tracking workbook for this category (it's an input master file,
+    not a produced ledger), so `document.excel_output_path` correctly stays
+    None and these uploads never surface in the Download Hub.
+
+    Physical (Layer A) and Payment (Layer B) rows get different write
+    semantics:
+      - Physical: Excel is the source of truth -- every upload fully
+        replaces the prior set for the project. But a row already marked
+        COMPLETED (e.g. via a manual toggle) can never be silently
+        downgraded back to PENDING by a re-upload that hasn't caught up.
+      - Payment: upserted by `bill_name`, never delete-all. `status` /
+        `invoiced_at` / `paid_at` represent real financial actions already
+        taken and must survive re-uploads.
+    """
+    payload = state.extracted_payload
+    physical_rows = payload.get("physical", [])
+    payment_rows = payload.get("payments", [])
+
+    existing_physical_status = {
+        m.milestone_name: m.status
+        for m in db.query(ProjectMilestone).filter(ProjectMilestone.project_id == state.project_id)
+    }
+    db.query(ProjectMilestone).filter(ProjectMilestone.project_id == state.project_id).delete()
+
+    for entry in physical_rows:
+        try:
+            status = MilestoneStatus(entry.get("status", "PENDING"))
+        except ValueError:
+            status = MilestoneStatus.PENDING
+        if existing_physical_status.get(entry["milestone_name"]) == MilestoneStatus.COMPLETED:
+            status = MilestoneStatus.COMPLETED
+        db.add(
+            ProjectMilestone(
+                project_id=state.project_id,
+                milestone_name=entry["milestone_name"],
+                target_date=entry.get("target_date"),
+                status=status,
+                sequence=entry.get("sequence", 0),
+                source_document_id=state.document_id,
+            )
+        )
+    db.flush()
+
+    tender_document_id = _resolve_latest_tender_document_id(db, state.project_id)
+    for entry in payment_rows:
+        bill = (
+            db.query(PaymentMilestone)
+            .filter(PaymentMilestone.project_id == state.project_id, PaymentMilestone.bill_name == entry["bill_name"])
+            .first()
+        )
+        if not bill:
+            bill = PaymentMilestone(project_id=state.project_id, bill_name=entry["bill_name"])
+            db.add(bill)
+        bill.contract_pct = entry.get("contract_pct") or bill.contract_pct or 0.0
+        bill.linked_physical_milestone_name = entry.get("linked_physical_milestone_name") or bill.linked_physical_milestone_name
+        bill.sequence = entry.get("sequence", bill.sequence or 0)
+        if tender_document_id:
+            bill.source_document_id = tender_document_id
+    db.flush()
+
+    for exc in state.exceptions:
+        db.add(
+            ExceptionAlert(
+                project_id=state.project_id,
+                category=ExceptionCategory(exc.category),
+                severity=ExceptionSeverity(exc.severity),
+                message=exc.message,
+                related_table="project_milestones",
+                source_document_id=state.document_id,
+                source_page_number=exc.source_page_number or 1,
+                source_text_snippet=exc.source_text_snippet or exc.message,
+            )
+        )
+
+    if document:
+        document.ingestion_status = IngestionStatus.COMPLETE
+        document.page_count = document.page_count or 1
+        document.report_date = None
+        document.excel_output_path = None
+
+    db.add(
+        IngestionAuditLog(
+            project_id=state.project_id,
+            document_id=state.document_id,
+            node_name=NODE_NAME,
+            status="SUCCESS",
+            message=(
+                f"Replaced {len(physical_rows)} physical milestone(s) and upserted {len(payment_rows)} "
+                f"payment milestone(s) from the uploaded schedule; {len(state.exceptions)} exception(s)."
+            ),
+        )
+    )
+    db.commit()
+
+    newly_eligible = sync_payment_milestone_eligibility(db, state.project_id)
+    for bill in newly_eligible:
+        notify_payment_milestone_eligible(db, state.project_id, bill)
+
+    return {
+        "excel_output_path": None,
+        "audit_trail": state.audit_trail
+        + [f"{NODE_NAME}: replaced {len(physical_rows)} physical, upserted {len(payment_rows)} payment milestone(s)"],
+    }
+
+
 def make_excel_writer_node(db: Session):
     def _node(state: IngestState) -> dict:
         document = db.query(ProjectDocument).filter(ProjectDocument.id == state.document_id).first() if state.document_id else None
@@ -256,6 +378,9 @@ def make_excel_writer_node(db: Session):
                 )
                 db.commit()
             return {"audit_trail": state.audit_trail + [f"{NODE_NAME}: skipped (error/no payload)"]}
+
+        if state.category == "SCHEDULE":
+            return _write_schedule(db, state, document)
 
         writer_fn = _WRITERS.get(state.category)
         excel = ExcelWriterService()

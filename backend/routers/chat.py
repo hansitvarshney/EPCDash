@@ -7,7 +7,8 @@ from sqlalchemy.orm import Session
 
 from backend.database import get_db
 from backend.models import ProjectDocument
-from backend.graph_query_engine import answer_project_query
+from backend.graph_query_engine import answer_project_query, invalidate_document_cache
+from backend.graph_rag import build_project_knowledge_graph
 
 router = APIRouter(prefix="/api/v1/sites", tags=["chat"])
 
@@ -50,4 +51,15 @@ def delete_site_document(site_id: int, document_id: int, db: Session = Depends(g
         shutil.rmtree(index_path)
     db.delete(doc)
     db.commit()
+
+    # Deleting a document changes what's on disk for this project, so both
+    # the raw-text chat cache and the compiled knowledge graph must be
+    # refreshed -- otherwise the assistant keeps answering from a deleted
+    # document's stale, cached content indefinitely.
+    invalidate_document_cache(site_id)
+    try:
+        build_project_knowledge_graph(site_id, db)
+    except Exception as exc:
+        print(f"Graph compilation deferred: {exc}")
+
     return {"status": "success", "message": f"Document {doc.file_name} removed successfully."}

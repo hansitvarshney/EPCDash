@@ -30,7 +30,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.database import init_db, SessionLocal
-from backend.routers import sites, ingest, exceptions, downloads, chat
+from backend.routers import sites, ingest, exceptions, downloads, chat, whatsapp
 
 app = FastAPI(title="EPC Multi-Agent Construction Platform API")
 
@@ -74,6 +74,14 @@ def _seed_demo_data_if_empty() -> None:
         print("No existing project data found -- seeding demo sites...")
         seed_active_sites()
 
+    # Silchar is seeded separately (its own richer tender-derived dataset,
+    # not part of the generic 3-site demo batch above). `seed_silchar_project`
+    # guards every insert with `if not existing`, so it's safe to call on
+    # every startup regardless of `has_data` -- a no-op once the project exists.
+    from backend.seed_silchar import seed_silchar_project
+
+    seed_silchar_project()
+
 
 @app.on_event("startup")
 def on_startup():
@@ -86,6 +94,7 @@ app.include_router(ingest.router)
 app.include_router(exceptions.router)
 app.include_router(downloads.router)
 app.include_router(chat.router)
+app.include_router(whatsapp.router)
 
 
 @app.get("/")

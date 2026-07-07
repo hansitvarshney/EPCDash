@@ -15,6 +15,8 @@ from backend.models import (
     BillingMilestone,
     Drawing,
     ExceptionAlert,
+    ProjectMilestone,
+    PaymentMilestone,
 )
 
 router = APIRouter(prefix="/api/v1/sites", tags=["downloads"])
@@ -112,6 +114,13 @@ def delete_site_document(site_id: int, document_id: int, db: Session = Depends(g
     db.query(MaterialLedgerEntry).filter(MaterialLedgerEntry.source_document_id == document_id).delete(synchronize_session=False)
     db.query(BillingMilestone).filter(BillingMilestone.source_document_id == document_id).delete(synchronize_session=False)
     db.query(Drawing).filter(Drawing.source_document_id == document_id).delete(synchronize_session=False)
+    db.query(ProjectMilestone).filter(ProjectMilestone.source_document_id == document_id).delete(synchronize_session=False)
+    # Never delete PaymentMilestone rows here -- their lifecycle (LOCKED/
+    # ELIGIBLE/INVOICED/PAID) represents real financial state that must
+    # outlive the tender PDF being removed. Just unlink the audit-trail FK.
+    db.query(PaymentMilestone).filter(PaymentMilestone.source_document_id == document_id).update(
+        {"source_document_id": None}, synchronize_session=False
+    )
     db.query(ExceptionAlert).filter(ExceptionAlert.source_document_id == document_id).delete(synchronize_session=False)
 
     # Only unlink the original source file if no sibling document (e.g. the

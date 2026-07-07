@@ -8,11 +8,15 @@ import {
   fetchSiteOverview,
   fetchExceptions,
   fetchDownloads,
+  fetchAttendance,
+  fetchSiteInsights,
   resolveException,
   deleteDocument,
   SiteOverview,
   ExceptionAlert,
   DownloadFile,
+  AttendanceSheet as AttendanceSheetData,
+  SiteInsights,
 } from '../../lib/api';
 import HealthBadge from '../../components/site/HealthBadge';
 import VelocityTracker from '../../components/detail/VelocityTracker';
@@ -20,6 +24,14 @@ import ExceptionsFeed from '../../components/detail/ExceptionsFeed';
 import DownloadHub from '../../components/detail/DownloadHub';
 import IngestPanel from '../../components/detail/IngestPanel';
 import DocumentChat from '../../components/chat/DocumentChat';
+import ContractTimeline from '../../components/detail/ContractTimeline';
+import SiteAttendanceSheet from '../../components/detail/SiteAttendanceSheet';
+import PhysicalProgressTracker from '../../components/detail/PhysicalProgressTracker';
+import PaymentMilestoneTracker from '../../components/detail/PaymentMilestoneTracker';
+import MaterialVelocity from '../../components/detail/MaterialVelocity';
+import LatestBillingActivity from '../../components/detail/LatestBillingActivity';
+import FinancialLedger from '../../components/detail/FinancialLedger';
+import DrawingStatusLedger from '../../components/detail/DrawingStatusLedger';
 
 export default function SiteDetailPage() {
   const params = useParams();
@@ -28,19 +40,25 @@ export default function SiteDetailPage() {
   const [overview, setOverview] = useState<SiteOverview | null>(null);
   const [exceptions, setExceptions] = useState<ExceptionAlert[]>([]);
   const [downloads, setDownloads] = useState<DownloadFile[]>([]);
+  const [attendance, setAttendance] = useState<AttendanceSheetData | null>(null);
+  const [insights, setInsights] = useState<SiteInsights | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const loadAll = useCallback(async () => {
     try {
-      const [overviewData, exceptionsData, downloadsData] = await Promise.all([
+      const [overviewData, exceptionsData, downloadsData, attendanceData, insightsData] = await Promise.all([
         fetchSiteOverview(siteId),
         fetchExceptions(siteId),
         fetchDownloads(siteId),
+        fetchAttendance(siteId),
+        fetchSiteInsights(siteId),
       ]);
       setOverview(overviewData);
       setExceptions(exceptionsData);
       setDownloads(downloadsData);
+      setAttendance(attendanceData);
+      setInsights(insightsData);
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load site data.');
@@ -94,7 +112,7 @@ export default function SiteDetailPage() {
     );
   }
 
-  const { site, summary, velocity } = overview;
+  const { site, velocity } = overview;
 
   return (
     <main className="min-h-screen bg-[#0B0F19] text-[#E2E8F0] p-6 lg:p-10 font-sans">
@@ -123,12 +141,28 @@ export default function SiteDetailPage() {
             <HealthBadge status={site.health_status} />
           </div>
 
-          <div className="grid grid-cols-3 gap-4 mt-6 pt-5 border-t border-slate-800/60">
-            <Stat label="Masons Deployed" value={String(summary.manpower_deployed.cumulative_masons)} />
-            <Stat label="Helpers Deployed" value={String(summary.manpower_deployed.cumulative_helpers)} />
-            <Stat label="Total Man-Days" value={String(summary.manpower_deployed.total_man_days)} accent />
-          </div>
+          <ContractTimeline timeline={overview.contract_timeline} metrics={overview.operational_metrics} />
         </div>
+
+        {insights && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <PhysicalProgressTracker tracker={insights.milestone_tracker} siteId={siteId} onChanged={loadAll} />
+            <PaymentMilestoneTracker tracker={insights.milestone_tracker} siteId={siteId} onChanged={loadAll} />
+            <FinancialLedger ledger={insights.financial_ledger} />
+            <MaterialVelocity rows={insights.material_velocity} />
+            <LatestBillingActivity rows={insights.latest_billing_activity} />
+            <DrawingStatusLedger rows={insights.drawing_status_ledger} />
+          </div>
+        )}
+
+        {attendance && (
+          <SiteAttendanceSheet
+            siteId={siteId}
+            attendance={attendance}
+            todaysExpenseLog={insights?.financial_ledger.todays_expense_log ?? null}
+            onExpenseSaved={loadAll}
+          />
+        )}
 
         <IngestPanel siteId={siteId} onIngested={loadAll} />
 
@@ -146,14 +180,5 @@ export default function SiteDetailPage() {
         <DocumentChat siteId={siteId} />
       </div>
     </main>
-  );
-}
-
-function Stat({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
-  return (
-    <div>
-      <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{label}</p>
-      <p className={`text-2xl font-black mt-1 ${accent ? 'text-blue-400' : 'text-white'}`}>{value}</p>
-    </div>
   );
 }

@@ -18,6 +18,7 @@ from google.genai.errors import ServerError
 from backend.models import IngestionAuditLog
 from backend.workflow.state import IngestState
 from backend.workflow.schemas import CATEGORY_SCHEMAS, CATEGORY_PROMPTS
+from backend.workflow.schedule_parser import parse_milestone_workbook
 
 NODE_NAME = "extraction"
 _client = None
@@ -44,18 +45,61 @@ def _execute_with_retry(client, contents, config_obj, max_retries: int = 4, back
             raise
 
 
+def _extract_schedule(db: Session, state: IngestState) -> dict:
+    """
+    SCHEDULE never goes through Gemini -- the input is already a structured
+    master-schedule workbook, so it's parsed deterministically with openpyxl
+    instead. Only the first file in the batch is used (a master schedule is
+    always a single workbook, even if other categories in the same upload
+    span multiple pages).
+    """
+    try:
+        parsed = parse_milestone_workbook(state.files[0].file_bytes)
+        payload = parsed  # {"physical": [...], "payments": [...]}
+        status, message = (
+            "SUCCESS",
+            f"Parsed {len(parsed['physical'])} physical milestone(s) and {len(parsed['payments'])} "
+            f"payment milestone(s) from the uploaded schedule workbook.",
+        )
+    except Exception as exc:  # noqa: BLE001 - surfaced to caller via state.error
+        payload = None
+        status, message = "FAILED", f"Schedule parsing failed: {exc}"
+
+    if state.document_id:
+        db.add(
+            IngestionAuditLog(
+                project_id=state.project_id,
+                document_id=state.document_id,
+                node_name=NODE_NAME,
+                status=status,
+                message=message,
+            )
+        )
+        db.flush()
+
+    return {
+        "extracted_payload": payload,
+        "error": None if payload is not None else message,
+        "audit_trail": state.audit_trail + [f"{NODE_NAME}: {status}"],
+    }
+
+
 def make_extraction_node(db: Session):
     def _node(state: IngestState) -> dict:
+        if not state.files:
+            return {
+                "error": "No pages were provided to extract from.",
+                "audit_trail": state.audit_trail + [f"{NODE_NAME}: no pages in batch"],
+            }
+
+        if state.category == "SCHEDULE":
+            return _extract_schedule(db, state)
+
         schema_cls = CATEGORY_SCHEMAS.get(state.category)
         if not schema_cls:
             return {
                 "error": f"Unsupported ingestion category '{state.category}'.",
                 "audit_trail": state.audit_trail + [f"{NODE_NAME}: unsupported category"],
-            }
-        if not state.files:
-            return {
-                "error": "No pages were provided to extract from.",
-                "audit_trail": state.audit_trail + [f"{NODE_NAME}: no pages in batch"],
             }
 
         client = _get_client()

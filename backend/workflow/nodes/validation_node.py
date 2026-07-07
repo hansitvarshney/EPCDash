@@ -243,11 +243,77 @@ def _validate_drawing(db: Session, project_id: int, payload: dict) -> list[Excep
     return exceptions
 
 
+def _validate_schedule(db: Session, project_id: int, payload: dict) -> list[ExceptionDraft]:
+    exceptions: list[ExceptionDraft] = []
+    physical = payload.get("physical", [])
+    payments = payload.get("payments", [])
+
+    if not physical and not payments:
+        exceptions.append(
+            ExceptionDraft(
+                category="SCHEDULE",
+                severity="CRITICAL",
+                message="No milestone rows could be parsed from the uploaded schedule workbook -- verify sheet layout.",
+                excel_field="milestone_name",
+            )
+        )
+    for idx, entry in enumerate(physical):
+        if not entry.get("target_date"):
+            exceptions.append(
+                ExceptionDraft(
+                    category="SCHEDULE",
+                    severity="WARNING",
+                    message=f"Milestone '{entry.get('milestone_name')}' is missing a parseable target date.",
+                    excel_field="target_date",
+                    entry_index=idx,
+                )
+            )
+
+    physical_names = {entry.get("milestone_name") for entry in physical}
+    for idx, bill in enumerate(payments):
+        if not bill.get("linked_physical_milestone_name"):
+            exceptions.append(
+                ExceptionDraft(
+                    category="SCHEDULE",
+                    severity="WARNING",
+                    message=f"Payment milestone '{bill.get('bill_name')}' has no Linked Milestone -- it will never become eligible.",
+                    excel_field="linked_milestone",
+                    entry_index=idx,
+                )
+            )
+        elif bill["linked_physical_milestone_name"] not in physical_names:
+            exceptions.append(
+                ExceptionDraft(
+                    category="SCHEDULE",
+                    severity="WARNING",
+                    message=(
+                        f"Payment milestone '{bill.get('bill_name')}' links to "
+                        f"'{bill['linked_physical_milestone_name']}', which doesn't match any physical "
+                        f"milestone name in this sheet -- verify spelling."
+                    ),
+                    excel_field="linked_milestone",
+                    entry_index=idx,
+                )
+            )
+        if not bill.get("contract_pct"):
+            exceptions.append(
+                ExceptionDraft(
+                    category="SCHEDULE",
+                    severity="WARNING",
+                    message=f"Payment milestone '{bill.get('bill_name')}' is missing a parseable Contract %.",
+                    excel_field="contract_pct",
+                    entry_index=idx,
+                )
+            )
+    return exceptions
+
+
 _VALIDATORS = {
     "DPR": _validate_dpr,
     "MATERIAL": _validate_material,
     "BILLING": _validate_billing,
     "DRAWING": _validate_drawing,
+    "SCHEDULE": _validate_schedule,
 }
 
 

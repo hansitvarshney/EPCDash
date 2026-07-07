@@ -1,6 +1,6 @@
 import enum
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime, Enum as SAEnum
+from sqlalchemy import Column, Integer, String, Boolean, Float, ForeignKey, DateTime, Enum as SAEnum
 from sqlalchemy.orm import relationship
 
 from backend.database import Base
@@ -11,6 +11,7 @@ class ExceptionCategory(str, enum.Enum):
     MATERIAL = "MATERIAL"
     BILLING = "BILLING"
     DRAWING = "DRAWING"
+    SCHEDULE = "SCHEDULE"
 
 
 class ExceptionSeverity(str, enum.Enum):
@@ -41,6 +42,14 @@ class ExceptionAlert(Base):
 
     is_resolved = Column(Boolean, default=False, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+    # Monetary impact of this exception, when known (e.g. a contractual
+    # penalty/liquidated-damages amount). Nullable/defaulted to 0.0 since
+    # today's validators don't populate it yet -- it's wired into
+    # `AnalyticsEngine.get_financial_ledger()`'s "Active Penalties" term now
+    # so a future Compliance & EHS Penalty Log (see SILCHAR_AUDIT.md) can
+    # start writing real amounts without any further formula changes.
+    penalty_amount = Column(Float, nullable=True, default=0.0)
 
     project = relationship("Project", back_populates="exceptions")
     source_document = relationship("ProjectDocument", back_populates="exceptions")

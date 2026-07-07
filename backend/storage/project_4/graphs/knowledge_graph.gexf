@@ -1,0 +1,524 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-07-06">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="node">
+      <attribute id="0" title="type" type="string" />
+    </attributes>
+    <nodes>
+      <node id="Government of Assam" label="Government of Assam">
+        <attvalues>
+          <attvalue for="0" value="ORGANIZATION" />
+        </attvalues>
+      </node>
+      <node id="Public Works Department (Building)" label="Public Works Department (Building)">
+        <attvalues>
+          <attvalue for="0" value="ORGANIZATION" />
+        </attvalues>
+      </node>
+      <node id="Office of the Chief Engineer, P.W.D. (Building), Assam" label="Office of the Chief Engineer, P.W.D. (Building), Assam">
+        <attvalues>
+          <attvalue for="0" value="ORGANIZATION" />
+        </attvalues>
+      </node>
+      <node id="Chief Engineer" label="Chief Engineer">
+        <attvalues>
+          <attvalue for="0" value="ROLE" />
+        </attvalues>
+      </node>
+      <node id="Governor of Assam" label="Governor of Assam">
+        <attvalues>
+          <attvalue for="0" value="AUTHORITY" />
+        </attvalues>
+      </node>
+      <node id="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" label="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam">
+        <attvalues>
+          <attvalue for="0" value="PROJECT" />
+        </attvalues>
+      </node>
+      <node id="NIT No. CE/TB-IV/83/2021/10" label="NIT No. CE/TB-IV/83/2021/10">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_ID" />
+        </attvalues>
+      </node>
+      <node id="NIT Date 16-11-2022" label="NIT Date 16-11-2022">
+        <attvalues>
+          <attvalue for="0" value="DATE" />
+        </attvalues>
+      </node>
+      <node id="EPC Mode-1 Basis" label="EPC Mode-1 Basis">
+        <attvalues>
+          <attvalue for="0" value="PROJECT_MODE" />
+        </attvalues>
+      </node>
+      <node id="Estimated Cost" label="Estimated Cost">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="Rs. 41,44,06,450.00" label="Rs. 41,44,06,450.00">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_VALUE" />
+        </attvalues>
+      </node>
+      <node id="Bid Security" label="Bid Security">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="Bid Security General Category" label="Bid Security General Category">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_VALUE" />
+        </attvalues>
+      </node>
+      <node id="Bid Security Reserved Category" label="Bid Security Reserved Category">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_VALUE" />
+        </attvalues>
+      </node>
+      <node id="Cost of Bid Document" label="Cost of Bid Document">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="Rs.20,000.00" label="Rs.20,000.00">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_VALUE" />
+        </attvalues>
+      </node>
+      <node id="Net Banking" label="Net Banking">
+        <attvalues>
+          <attvalue for="0" value="PAYMENT_METHOD" />
+        </attvalues>
+      </node>
+      <node id="RTGS/NEFT" label="RTGS/NEFT">
+        <attvalues>
+          <attvalue for="0" value="PAYMENT_METHOD" />
+        </attvalues>
+      </node>
+      <node id="Office Memorandum FEB.269/2017/27 Dtd.21/08/2019" label="Office Memorandum FEB.269/2017/27 Dtd.21/08/2019">
+        <attvalues>
+          <attvalue for="0" value="LEGAL_REFERENCE" />
+        </attvalues>
+      </node>
+      <node id="Performance Guarantee" label="Performance Guarantee">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="Performance Guarantee Value" label="Performance Guarantee Value">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_VALUE" />
+        </attvalues>
+      </node>
+      <node id="Security Deposit" label="Security Deposit">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="Security Deposit Value" label="Security Deposit Value">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_VALUE" />
+        </attvalues>
+      </node>
+      <node id="Period of Completion" label="Period of Completion">
+        <attvalues>
+          <attvalue for="0" value="PROJECT_SCHEDULE" />
+        </attvalues>
+      </node>
+      <node id="Total Completion Period 30 months" label="Total Completion Period 30 months">
+        <attvalues>
+          <attvalue for="0" value="TIME_DURATION" />
+        </attvalues>
+      </node>
+      <node id="Planning, Design and Approval Phase" label="Planning, Design and Approval Phase">
+        <attvalues>
+          <attvalue for="0" value="PROJECT_PHASE" />
+        </attvalues>
+      </node>
+      <node id="Planning, Design and Approval Duration 3 months" label="Planning, Design and Approval Duration 3 months">
+        <attvalues>
+          <attvalue for="0" value="TIME_DURATION" />
+        </attvalues>
+      </node>
+      <node id="Execution and Completion Phase" label="Execution and Completion Phase">
+        <attvalues>
+          <attvalue for="0" value="PROJECT_PHASE" />
+        </attvalues>
+      </node>
+      <node id="Execution and Completion Duration 27 months" label="Execution and Completion Duration 27 months">
+        <attvalues>
+          <attvalue for="0" value="TIME_DURATION" />
+        </attvalues>
+      </node>
+      <node id="Notice Inviting Tender" label="Notice Inviting Tender">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Notice Inviting e-tender" label="Notice Inviting e-tender">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="e-Tenders" label="e-Tenders">
+        <attvalues>
+          <attvalue for="0" value="PROCEDURE" />
+        </attvalues>
+      </node>
+      <node id="Two Bid System" label="Two Bid System">
+        <attvalues>
+          <attvalue for="0" value="PROCEDURE" />
+        </attvalues>
+      </node>
+      <node id="Eligibility Bid" label="Eligibility Bid">
+        <attvalues>
+          <attvalue for="0" value="BID_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Financial Bid" label="Financial Bid">
+        <attvalues>
+          <attvalue for="0" value="BID_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Eligible Firms/Contractors" label="Eligible Firms/Contractors">
+        <attvalues>
+          <attvalue for="0" value="ACTOR_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Check List for Contractors" label="Check List for Contractors">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Information &amp; Instructions for Bidders" label="Information &amp; Instructions for Bidders">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Notice Inviting Bid-PWD-6" label="Notice Inviting Bid-PWD-6">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Brief Particulars of Work" label="Brief Particulars of Work">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Information and Guide-lines for Bidders" label="Information and Guide-lines for Bidders">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Eligibility and Evaluation Criteria" label="Eligibility and Evaluation Criteria">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Letter of Transmittal" label="Letter of Transmittal">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Form A to F (General)" label="Form A to F (General)">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Declaration about Site Inspection (Form H)" label="Declaration about Site Inspection (Form H)">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Affidavit of Non-blacklisting (Form I &amp; J)" label="Affidavit of Non-blacklisting (Form I &amp; J)">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Declaration about Signing of Integrity Agreement" label="Declaration about Signing of Integrity Agreement">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Integrity Pact" label="Integrity Pact">
+        <attvalues>
+          <attvalue for="0" value="LEGAL_CLAUSE" />
+        </attvalues>
+      </node>
+      <node id="PWD-8" label="PWD-8">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Schedule A-F (Financial)" label="Schedule A-F (Financial)">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Appendix-I: Site Laboratory and Material Testing" label="Appendix-I: Site Laboratory and Material Testing">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Appendix-II: Plant and Equipment Requirements" label="Appendix-II: Plant and Equipment Requirements">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="DSR-2018" label="DSR-2018">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_REFERENCE" />
+        </attvalues>
+      </node>
+      <node id="DSR-2021" label="DSR-2021">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_REFERENCE" />
+        </attvalues>
+      </node>
+      <node id="Standard GCC for EPC Project" label="Standard GCC for EPC Project">
+        <attvalues>
+          <attvalue for="0" value="LEGAL_CLAUSE" />
+        </attvalues>
+      </node>
+      <node id="Brief Scope of Works &amp; User Requirement" label="Brief Scope of Works &amp; User Requirement">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Minimum Acceptable Specifications" label="Minimum Acceptable Specifications">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_SPECIFICATION" />
+        </attvalues>
+      </node>
+      <node id="Architectural Consultancy" label="Architectural Consultancy">
+        <attvalues>
+          <attvalue for="0" value="SERVICE_TYPE" />
+        </attvalues>
+      </node>
+      <node id="General Conditions" label="General Conditions">
+        <attvalues>
+          <attvalue for="0" value="LEGAL_CLAUSE" />
+        </attvalues>
+      </node>
+      <node id="Additional Conditions" label="Additional Conditions">
+        <attvalues>
+          <attvalue for="0" value="LEGAL_CLAUSE" />
+        </attvalues>
+      </node>
+      <node id="Special Conditions for Cement &amp; Steel" label="Special Conditions for Cement &amp; Steel">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_SPECIFICATION" />
+        </attvalues>
+      </node>
+      <node id="Special Condition for Pollution Control and Green Building" label="Special Condition for Pollution Control and Green Building">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_SPECIFICATION" />
+        </attvalues>
+      </node>
+      <node id="Particular Specifications" label="Particular Specifications">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_SPECIFICATION" />
+        </attvalues>
+      </node>
+      <node id="Guarantee Bond" label="Guarantee Bond">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="Special Condition of Contract Vol. 1" label="Special Condition of Contract Vol. 1">
+        <attvalues>
+          <attvalue for="0" value="LEGAL_CLAUSE" />
+        </attvalues>
+      </node>
+      <node id="PAR 2021/GCC EPC Projects (PWD (Building &amp; NH)) Vol. 1" label="PAR 2021/GCC EPC Projects (PWD (Building &amp; NH)) Vol. 1">
+        <attvalues>
+          <attvalue for="0" value="LEGAL_REFERENCE" />
+        </attvalues>
+      </node>
+      <node id="Design Basis Report &amp; Technical Specifications (Overall)" label="Design Basis Report &amp; Technical Specifications (Overall)">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_SPECIFICATION" />
+        </attvalues>
+      </node>
+      <node id="Design Basis Report (Architectural, Structural, Electrical, HVAC, Plumbing, Firefighting)" label="Design Basis Report (Architectural, Structural, Electrical, HVAC, Plumbing, Firefighting)">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_SPECIFICATION" />
+        </attvalues>
+      </node>
+      <node id="Technical Specifications (Electrical, HVAC, Plumbing, Firefighting)" label="Technical Specifications (Electrical, HVAC, Plumbing, Firefighting)">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_SPECIFICATION" />
+        </attvalues>
+      </node>
+      <node id="General Information and Brief Description of E&amp;M Works" label="General Information and Brief Description of E&amp;M Works">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Scope of Work, User Requirements and Technical Specifications (E&amp;M)" label="Scope of Work, User Requirements and Technical Specifications (E&amp;M)">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Eligibility Criteria (E&amp;M)" label="Eligibility Criteria (E&amp;M)">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Form–K-Willingness Certificate" label="Form–K-Willingness Certificate">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Memorandum of Understanding" label="Memorandum of Understanding">
+        <attvalues>
+          <attvalue for="0" value="LEGAL_CLAUSE" />
+        </attvalues>
+      </node>
+      <node id="Form–A-Financial Information" label="Form–A-Financial Information">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Form of Bankers Certificate (Form-B)" label="Form of Bankers Certificate (Form-B)">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Form–C-Details of All Works of Similar Class Completed" label="Form–C-Details of All Works of Similar Class Completed">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Form-D-Performance Report of Works" label="Form-D-Performance Report of Works">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Part-C1-Specification for EI Work" label="Part-C1-Specification for EI Work">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_SPECIFICATION" />
+        </attvalues>
+      </node>
+      <node id="Scope &amp; Specification of Horticulture Work" label="Scope &amp; Specification of Horticulture Work">
+        <attvalues>
+          <attvalue for="0" value="TECHNICAL_SPECIFICATION" />
+        </attvalues>
+      </node>
+      <node id="Conditions Of Contract Specific to Green Building Practice" label="Conditions Of Contract Specific to Green Building Practice">
+        <attvalues>
+          <attvalue for="0" value="LEGAL_CLAUSE" />
+        </attvalues>
+      </node>
+      <node id="Payment Schedule for Work" label="Payment Schedule for Work">
+        <attvalues>
+          <attvalue for="0" value="FINANCIAL_TERM" />
+        </attvalues>
+      </node>
+      <node id="Schedule of Quantities" label="Schedule of Quantities">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Finishing Schedule &amp; Drawings Vol. 3" label="Finishing Schedule &amp; Drawings Vol. 3">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="Soil Test Report and LOM Vol. 4" label="Soil Test Report and LOM Vol. 4">
+        <attvalues>
+          <attvalue for="0" value="DOCUMENT_TYPE" />
+        </attvalues>
+      </node>
+      <node id="e-Bidding" label="e-Bidding" />
+    </nodes>
+    <edges>
+      <edge source="Government of Assam" target="Public Works Department (Building)" id="0" label="OVERSEES" />
+      <edge source="Public Works Department (Building)" target="Office of the Chief Engineer, P.W.D. (Building), Assam" id="1" label="OPERATES" />
+      <edge source="Chief Engineer" target="Public Works Department (Building)" id="2" label="REPRESENTS" />
+      <edge source="Chief Engineer" target="e-Tenders" id="3" label="INVITES" />
+      <edge source="Chief Engineer" target="Governor of Assam" id="4" label="ACTS ON BEHALF OF" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="EPC Mode-1 Basis" id="5" label="IS ON" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Estimated Cost" id="6" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Period of Completion" id="7" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Brief Scope of Works &amp; User Requirement" id="8" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Minimum Acceptable Specifications" id="9" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Architectural Consultancy" id="10" label="REQUIRES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="General Conditions" id="11" label="IS GOVERNED BY" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Additional Conditions" id="12" label="IS GOVERNED BY" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Special Conditions for Cement &amp; Steel" id="13" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Special Condition for Pollution Control and Green Building" id="14" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Particular Specifications" id="15" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Special Condition of Contract Vol. 1" id="16" label="IS GOVERNED BY" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="PAR 2021/GCC EPC Projects (PWD (Building &amp; NH)) Vol. 1" id="17" label="IS GOVERNED BY" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Design Basis Report &amp; Technical Specifications (Overall)" id="18" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="General Information and Brief Description of E&amp;M Works" id="19" label="INCLUDES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Scope of Work, User Requirements and Technical Specifications (E&amp;M)" id="20" label="INCLUDES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Eligibility Criteria (E&amp;M)" id="21" label="REQUIRES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Form–K-Willingness Certificate" id="22" label="REQUIRES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Memorandum of Understanding" id="23" label="REQUIRES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Form–A-Financial Information" id="24" label="REQUIRES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Form of Bankers Certificate (Form-B)" id="25" label="REQUIRES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Form–C-Details of All Works of Similar Class Completed" id="26" label="REQUIRES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Form-D-Performance Report of Works" id="27" label="REQUIRES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Part-C1-Specification for EI Work" id="28" label="INCLUDES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Scope &amp; Specification of Horticulture Work" id="29" label="INCLUDES" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Conditions Of Contract Specific to Green Building Practice" id="30" label="IS GOVERNED BY" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Payment Schedule for Work" id="31" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Schedule of Quantities" id="32" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Finishing Schedule &amp; Drawings Vol. 3" id="33" label="HAS" />
+      <edge source="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" target="Soil Test Report and LOM Vol. 4" id="34" label="HAS" />
+      <edge source="NIT No. CE/TB-IV/83/2021/10" target="NIT Date 16-11-2022" id="35" label="HAS DATE" />
+      <edge source="Estimated Cost" target="Rs. 41,44,06,450.00" id="36" label="IS" />
+      <edge source="Bid Security" target="Bid Security General Category" id="37" label="IS DEFINED AS" />
+      <edge source="Bid Security" target="Bid Security Reserved Category" id="38" label="IS DEFINED AS" />
+      <edge source="Cost of Bid Document" target="Rs.20,000.00" id="39" label="IS" />
+      <edge source="Cost of Bid Document" target="Net Banking" id="40" label="TO BE DEPOSITED VIA" />
+      <edge source="Cost of Bid Document" target="RTGS/NEFT" id="41" label="TO BE DEPOSITED VIA" />
+      <edge source="Cost of Bid Document" target="Office Memorandum FEB.269/2017/27 Dtd.21/08/2019" id="42" label="DEPOSIT AS PER" />
+      <edge source="Performance Guarantee" target="Performance Guarantee Value" id="43" label="IS" />
+      <edge source="Security Deposit" target="Security Deposit Value" id="44" label="IS" />
+      <edge source="Period of Completion" target="Total Completion Period 30 months" id="45" label="IS" />
+      <edge source="Total Completion Period 30 months" target="Planning, Design and Approval Phase" id="46" label="COMPRISES" />
+      <edge source="Total Completion Period 30 months" target="Execution and Completion Phase" id="47" label="COMPRISES" />
+      <edge source="Planning, Design and Approval Phase" target="Planning, Design and Approval Duration 3 months" id="48" label="HAS DURATION" />
+      <edge source="Execution and Completion Phase" target="Execution and Completion Duration 27 months" id="49" label="HAS DURATION" />
+      <edge source="Notice Inviting e-tender" target="e-Tenders" id="50" label="DETAILS" />
+      <edge source="e-Tenders" target="Integrated Deputy Commissioner Office for Cachar at Silchar, Assam" id="51" label="ARE FOR" />
+      <edge source="e-Tenders" target="NIT No. CE/TB-IV/83/2021/10" id="52" label="ISSUED UNDER" />
+      <edge source="e-Tenders" target="Bid Security" id="53" label="REQUIRES" />
+      <edge source="e-Tenders" target="Cost of Bid Document" id="54" label="REQUIRES" />
+      <edge source="e-Tenders" target="Performance Guarantee" id="55" label="REQUIRES" />
+      <edge source="e-Tenders" target="Security Deposit" id="56" label="REQUIRES" />
+      <edge source="e-Tenders" target="e-Bidding" id="57" label="FOLLOWS" />
+      <edge source="e-Tenders" target="Two Bid System" id="58" label="CONDUCTED AS" />
+      <edge source="e-Tenders" target="Eligible Firms/Contractors" id="59" label="ARE FOR" />
+      <edge source="e-Tenders" target="Standard GCC for EPC Project" id="60" label="GOVERNED BY" />
+      <edge source="e-Tenders" target="Guarantee Bond" id="61" label="REQUIRES" />
+      <edge source="Two Bid System" target="Eligibility Bid" id="62" label="INCLUDES" />
+      <edge source="Two Bid System" target="Financial Bid" id="63" label="INCLUDES" />
+      <edge source="Financial Bid" target="PWD-8" id="64" label="INCLUDES" />
+      <edge source="Financial Bid" target="Schedule A-F (Financial)" id="65" label="INCLUDES" />
+      <edge source="Financial Bid" target="Appendix-I: Site Laboratory and Material Testing" id="66" label="INCLUDES" />
+      <edge source="Financial Bid" target="Appendix-II: Plant and Equipment Requirements" id="67" label="INCLUDES" />
+      <edge source="DSR-2018" target="DSR-2021" id="68" label="TO BE READ AS" />
+      <edge source="Design Basis Report &amp; Technical Specifications (Overall)" target="Design Basis Report (Architectural, Structural, Electrical, HVAC, Plumbing, Firefighting)" id="69" label="INCLUDES" />
+      <edge source="Design Basis Report &amp; Technical Specifications (Overall)" target="Technical Specifications (Electrical, HVAC, Plumbing, Firefighting)" id="70" label="INCLUDES" />
+      <edge source="e-Bidding" target="Check List for Contractors" id="71" label="REQUIRES" />
+      <edge source="e-Bidding" target="Information &amp; Instructions for Bidders" id="72" label="REQUIRES" />
+      <edge source="e-Bidding" target="Notice Inviting Bid-PWD-6" id="73" label="REQUIRES" />
+      <edge source="e-Bidding" target="Brief Particulars of Work" id="74" label="REQUIRES" />
+      <edge source="e-Bidding" target="Information and Guide-lines for Bidders" id="75" label="REQUIRES" />
+      <edge source="e-Bidding" target="Eligibility and Evaluation Criteria" id="76" label="REQUIRES" />
+      <edge source="e-Bidding" target="Letter of Transmittal" id="77" label="REQUIRES" />
+      <edge source="e-Bidding" target="Form A to F (General)" id="78" label="REQUIRES" />
+      <edge source="e-Bidding" target="Declaration about Site Inspection (Form H)" id="79" label="REQUIRES" />
+      <edge source="e-Bidding" target="Affidavit of Non-blacklisting (Form I &amp; J)" id="80" label="REQUIRES" />
+      <edge source="e-Bidding" target="Declaration about Signing of Integrity Agreement" id="81" label="REQUIRES" />
+      <edge source="e-Bidding" target="Integrity Pact" id="82" label="REQUIRES" />
+    </edges>
+  </graph>
+</gexf>

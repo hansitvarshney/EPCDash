@@ -9,6 +9,17 @@ const CATEGORIES = [
   { value: 'MATERIAL', label: 'Material Receipt / Consumption' },
   { value: 'BILLING', label: 'Vendor Invoice / Milestone' },
   { value: 'DRAWING', label: 'Drawing Register Entry' },
+  { value: 'SCHEDULE', label: 'Micro-Schedule / Milestone Master Sheet' },
+  { value: 'TENDER_AGREEMENT', label: 'Tender Agreement (Reference PDF)' },
+];
+
+const ACCEPTED_MIME_TYPES = [
+  'application/pdf',
+  'image/jpeg',
+  'image/jpg',
+  'image/png',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'application/vnd.ms-excel',
 ];
 
 function fileKey(file: File): string {
@@ -24,8 +35,8 @@ export default function IngestPanel({ siteId, onIngested }: { siteId: number; on
   const inputRef = useRef<HTMLInputElement>(null);
 
   const addFiles = (incoming: FileList | File[]) => {
-    const accepted = Array.from(incoming).filter((f) =>
-      ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'].includes(f.type)
+    const accepted = Array.from(incoming).filter(
+      (f) => ACCEPTED_MIME_TYPES.includes(f.type) || /\.(xlsx|xlsm)$/i.test(f.name)
     );
     setFiles((prev) => {
       const existingKeys = new Set(prev.map(fileKey));
@@ -98,7 +109,7 @@ export default function IngestPanel({ siteId, onIngested }: { siteId: number; on
         ref={inputRef}
         className="hidden"
         multiple
-        accept="image/jpeg,image/png,image/jpg,application/pdf"
+        accept="image/jpeg,image/png,image/jpg,application/pdf,.xlsx,.xlsm"
         onChange={(e) => {
           if (e.target.files) addFiles(e.target.files);
           e.target.value = '';
@@ -127,8 +138,8 @@ export default function IngestPanel({ siteId, onIngested }: { siteId: number; on
             className="w-full flex flex-col items-center justify-center gap-2 text-xs font-bold text-slate-300 hover:text-white transition-colors"
           >
             <Images size={18} className="text-slate-500" />
-            Select or drop image(s) / PDF
-            <span className="text-[10px] font-medium normal-case text-slate-500">Add multiple photos of the same report at once</span>
+            Select or drop image(s) / PDF / schedule .xlsx
+            <span className="text-[10px] font-medium normal-case text-slate-500">Add multiple photos of the same report, or one master schedule workbook</span>
           </button>
         ) : (
           <div className="space-y-3">

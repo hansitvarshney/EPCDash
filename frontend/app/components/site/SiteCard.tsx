@@ -47,9 +47,9 @@ export default function SiteCard({ site }: { site: SiteCardType }) {
       <div className="mt-5 pt-4 border-t border-slate-800/80 grid grid-cols-2 gap-3 text-[11px]">
         <div>
           <p className="text-slate-500 uppercase tracking-wide font-bold text-[9px] mb-1 flex items-center gap-1">
-            <IndianRupee size={9} /> Total PO Value
+            <IndianRupee size={9} /> Total Tender Value
           </p>
-          <p className="text-slate-200 font-bold">{formatCurrency(site.total_po_value)}</p>
+          <p className="text-slate-200 font-bold">{formatCurrency(site.total_tender_value)}</p>
         </div>
         <div>
           <p className="text-slate-500 uppercase tracking-wide font-bold text-[9px] mb-1">Last Synced</p>
