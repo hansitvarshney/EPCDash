@@ -1,4 +1,8 @@
-# 🏗️ EPCdash: Enterprise EPC Project Command Center
+# EPCDash — Enterprise EPC Project Command Center
+
+**Live demo:** [frontend-production-30b9c.up.railway.app](https://frontend-production-30b9c.up.railway.app/sites/4) · **Stack:** Python, FastAPI, Next.js, LangGraph, Gemini, SQLite, Railway
+
+Deployed at **SKIC Pvt. Ltd.** — reduced manual reporting by ~2–3 hours/day across live EPC construction projects.
 
 ## Executive Overview
 In multi-crore Engineering, Procurement, and Construction (EPC) operations, a critical fragmentation exists between on-site physical engineering schedules (typically tracked in isolated Excel workbooks) and formal client billing structures dictated by complex Tender Agreement tranches. This repository serves as a production-grade, AI-powered command center designed to bridge that gap. By unifying unstructured site data, conversational inputs, and rigid financial ledgers, the platform provides real-time operational visibility and automated cash flow auditing for principal contractors.
@@ -35,6 +39,7 @@ The platform is powered by an orchestrated **LangGraph** pipeline that models in
 ### Local Development
 1. **Backend Setup:**
    ```bash
+   cp .env.example .env          # add GEMINI_API_KEY
    python3 -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
@@ -44,6 +49,13 @@ The platform is powered by an orchestrated **LangGraph** pipeline that models in
 2. **Frontend Setup:**
    ```bash
    cd frontend
+   cp .env.local.example .env.local
    npm install
    npm run dev
    ```
+
+Open [http://localhost:3000](http://localhost:3000) — API at [http://localhost:8000](http://localhost:8000).
+
+## License
+
+MIT — see [LICENSE](LICENSE).
